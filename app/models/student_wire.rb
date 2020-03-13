@@ -1,0 +1,2 @@
+class StudentWire < ApplicationRecord
+end

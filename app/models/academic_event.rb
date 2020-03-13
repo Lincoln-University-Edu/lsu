@@ -1,0 +1,2 @@
+class AcademicEvent < ApplicationRecord
+end
