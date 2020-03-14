@@ -17,7 +17,7 @@ rails g model SomeModel some_string_attribute some_integer_attibute:integer some
 * Run Migrations
 Run the Migrations via your terminal
 ```ruby
-rails rub ab:migrate
+rails run db:migrate
 ```
 
 ### Adding attributes to models
