@@ -17,6 +17,9 @@ It serves as the backend for the Flutter and React JS apps, providing CRUD funct
 - Database Cleaner
 - Factory Bot Rails
 
+## Docs
+* [Models](docs/models)
+
 ## Live Demo
 
 [Live Demo](https://moviejunkie.herokuapp.com)
