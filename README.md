@@ -18,7 +18,7 @@ It serves as the backend for the Flutter and React JS apps, providing CRUD funct
 - Factory Bot Rails
 
 ## Docs
-* [Models](docs/models)
+* [Models](doc/models)
 
 ## Live Demo
 
