@@ -1,0 +1,2 @@
+class AcademicEventsController < ApplicationController
+end
