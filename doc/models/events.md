@@ -28,7 +28,7 @@ The presence of the following are validated before the model is saved, hence you
 The following attributes are validated as a result of the belongs_to association on this model. 
 * entity_id
 
-** Ex: 
+* Ex: 
 An entity must create an event like so: 
 entity = Entity.create!(entity_params)
 event = entity.events.create!(event_params)
