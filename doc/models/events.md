@@ -28,7 +28,7 @@ The presence of the following are validated before the model is saved, hence you
 The following attributes are validated as a result of the belongs_to association on this model. 
 * entity_id
 
-* Ex: 
+* What does this mean? 
 An entity must create an event like so: 
 ```ruby
 entity = Entity.create!(entity_params)
