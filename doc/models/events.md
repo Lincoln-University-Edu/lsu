@@ -39,6 +39,7 @@ Alternatively, you may create the event then add the entity id to it like so:
 ```ruby
 entity = Entity.create!(entity_params)
 event = Event.new(event_params)
+# take note of the two variations below
 event.entity = entity or event.entity_id = entity.id
 event.save!
 ```
