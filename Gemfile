@@ -19,6 +19,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+# JWT
+gem 'jwt'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -33,7 +36,9 @@ end
 
 group :test do
   gem 'shoulda-matchers'
-  gem 'factory_bot'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'database_cleaner'
 end
 
 group :development do
