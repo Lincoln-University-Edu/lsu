@@ -30,11 +30,15 @@ The following attributes are validated as a result of the belongs_to association
 
 * Ex: 
 An entity must create an event like so: 
+```ruby
 entity = Entity.create!(entity_params)
 event = entity.events.create!(event_params)
+```
 
 Alternatively, you may create the event then add the entity id to it like so: 
+```ruby
 entity = Entity.create!(entity_params)
 event = Event.new(event_params)
 event.entity = entity or event.entity_id = entity.id
 event.save!
+```
