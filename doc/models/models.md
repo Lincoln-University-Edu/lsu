@@ -16,7 +16,7 @@ rails g migration AddMaritalStatusToUsers
 
 * Write the migration
 In your text editor go to app/db/migrate/random_numbers_add_marital_status_to_users, and add the following
-```ruby add_column :users, :marital_status, default: "", null: false```
+``` ruby add_column :users, :marital_status, default: "", null: false```
 
 Note: default values and null constraints are optional
 
