@@ -28,7 +28,6 @@ RSpec.describe 'Users API', type: :request do
   
       it 'should return status of 201' do
         expect(response).to have_http_status(201)
-        p response.body
       end
     end
 

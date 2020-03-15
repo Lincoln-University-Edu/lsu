@@ -21,22 +21,23 @@ module RequestSpecHelper
   end
 
   def valid_event_params
+    entity = Entity.create!(valid_entity_params)
     { 
       name: "A name",
       description: "A description",
-      entity: Entity.create!(valid_entity_params),
+      entity_id: entity.id,
       datetime: Time.now,
       location: "The earth",
       price: 2.33, 
       external_link: "somefancyurl.com",
-      evemt_keywords: "A string",
+      event_keywords: "A, string",
       category: "the best",
     }
   end
 
   def invalid_event_params
     params = valid_event_params
-    params["title"] = ""
+    params["name"] = ""
     params
   end
 

@@ -29,9 +29,9 @@ RSpec.describe 'Events API', type: :request do
     end
 
     context 'with invalid parameters' do
-      before { post "/events/#{event.id}", params: invalid_event_params }
+      before { post "/events", params: invalid_event_params }
       it 'should raise an error' do
-        expect(response.body).to match(/Validation failed: Title can't be blank/)
+        expect(response.body).to match(/Validation failed: Name can't be blank/)
       end
 
       it 'should return status of 422' do
@@ -42,14 +42,34 @@ RSpec.describe 'Events API', type: :request do
 
   describe 'PUT /events/:id' do
     context 'with valid parameters' do
-      before { post "/events/#{event.id}", params: valid_event_params }
+      before { put "/events/#{event.id}", params: valid_event_params }
       it 'should return status of 204' do
         expect(response).to have_http_status(204)
       end
     end
 
     context 'with invalid parameters' do
-      before { post "/events/300", params: valid_event_params }
+      before { put "/events/300", params: valid_event_params }
+      it 'should raise an error' do
+        expect(response.body).to match(/Couldn't find Event/)
+      end
+
+      it 'should return status of 404' do
+        expect(response).to have_http_status(404)
+      end
+    end
+  end
+
+  describe 'DELETE /events/:id' do
+    context 'with valid parameters' do
+      before { delete "/events/#{event.id}" }
+      it 'should return status of 204' do
+        expect(response).to have_http_status(204)
+      end
+    end
+
+    context 'with invalid parameters' do
+      before { delete "/events/300" }
       it 'should raise an error' do
         expect(response.body).to match(/Couldn't find Event/)
       end
