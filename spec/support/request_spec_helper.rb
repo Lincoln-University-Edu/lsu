@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 module RequestSpecHelper
   def json
     JSON.parse(response.body)
@@ -23,14 +25,14 @@ module RequestSpecHelper
   def valid_event_params
     entity = Entity.create!(valid_entity_params)
     { 
-      name: "A name",
       description: "A description",
+      name: "A name",
       entity_id: entity.id,
       datetime: Time.now,
       location: "The earth",
       price: 2.33, 
       external_link: "somefancyurl.com",
-      event_keywords: "A, string",
+      event_keywords: "some, fancy, keywords",
       category: "the best",
     }
   end
@@ -61,4 +63,20 @@ module RequestSpecHelper
     }
   end
   
+  def valid_article_params
+    {
+      author_name: "Some random name",
+      title: "Some random title",
+      body: "Some random bit of text",
+      description: "Some random description",
+      cover_image: "Some random bit of text",
+      article_keywords: "Some, random, bit, of, text",
+      category: "Some random category",
+    }
+  end
+
+  def invalid_article_params
+    params = valid_article_params
+    params["author_name"] = ""
+  end
 end
