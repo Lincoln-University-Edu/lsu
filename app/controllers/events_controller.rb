@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[ update destroy ]
+  before_action :set_entity, only: %i[ create ]
 
   def index
    events = Event.all
@@ -7,7 +8,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    event = Event.create!(event_params)
+    event = @entity.events.create!(event_params)
     json_response(event, :created)
   end
 
@@ -27,17 +28,11 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def set_entity
+    @entity = Entity.find(params[:entity_id])
+  end
+
   def event_params
-    params.permit(
-      :datetime,
-      :entity_id,
-      :name,
-      :description,
-      :location,
-      :price,
-      :external_link,
-      :event_keywords,
-      :category,
-    )
+    params.permit( :datetime, :name, :description, :location, :price, :external_link, :event_keywords, :entity_id,:category)
   end
 end
