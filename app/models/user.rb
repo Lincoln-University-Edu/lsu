@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  validates :first_name, :last_name, :email, :user_class,:password, presence: true
+  validates :first_name, :last_name, :email, :student_class,:password, presence: true
   has_secure_password
   has_many :majorings
   has_many :majors, through: :majorings
