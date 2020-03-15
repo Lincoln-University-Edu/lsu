@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_14_143616) do
+ActiveRecord::Schema.define(version: 2020_03_15_102447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,30 @@ ActiveRecord::Schema.define(version: 2020_03_14_143616) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "majorings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "major_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["major_id"], name: "index_majorings_on_major_id"
+    t.index ["user_id"], name: "index_majorings_on_user_id"
+  end
+
+  create_table "majors", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "entity_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["entity_id"], name: "index_organizations_on_entity_id"
+    t.index ["user_id"], name: "index_organizations_on_user_id"
+  end
+
   create_table "promotions", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -102,13 +126,19 @@ ActiveRecord::Schema.define(version: 2020_03_14_143616) do
 
   create_table "users", force: :cascade do |t|
     t.string "email"
-    t.string "name"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.integer "user_class"
   end
 
   add_foreign_key "events", "entities"
   add_foreign_key "keywordings", "keywords"
+  add_foreign_key "majorings", "majors"
+  add_foreign_key "majorings", "users"
+  add_foreign_key "organizations", "entities"
+  add_foreign_key "organizations", "users"
   add_foreign_key "promotions", "users"
 end
