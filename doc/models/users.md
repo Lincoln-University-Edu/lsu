@@ -1,4 +1,4 @@
-### Events
+### Users
 The users model is used in the creation of a user when signing up
 
 #### Attributes
