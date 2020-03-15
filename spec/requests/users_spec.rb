@@ -23,18 +23,19 @@ RSpec.describe 'Users API', type: :request do
       before { post '/users', params: valid_user_params }
 
       it 'should create a user' do
-        expect(json['name']).to eq('The Real Master Yoda')
+        expect(json['first_name']).to eq('The Real')
       end
   
       it 'should return status of 201' do
         expect(response).to have_http_status(201)
+        p response.body
       end
     end
 
     context 'with invalid attributes' do
       before { post '/users', params: invalid_user_params }
       it 'should raise an error' do
-        expect(response.body).to match(/Validation failed: Name can't be blank, Email can't be blank/)
+        expect(response.body).to match(/Validation failed: Email can't be blank/)
       end
 
       it 'should return status 422' do
