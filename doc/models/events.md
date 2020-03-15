@@ -10,7 +10,7 @@ The events model is used in the creation of social/public events
 * location(string)
 * price(int)
 * external link(string)
-* keywords(array)
+* event_keywords(array)
 * category(string)
 
 #### Validations
