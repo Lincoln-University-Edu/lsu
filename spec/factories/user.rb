@@ -5,5 +5,6 @@ FactoryBot.define do
     email { Faker::Internet.email }
     password { Faker::Internet.password }
     student_class { 2019 }
+    all_majors { ["major1", "major2", "major3"] }
   end
 end
