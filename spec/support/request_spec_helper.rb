@@ -54,13 +54,9 @@ module RequestSpecHelper
   end
 
   def invalid_entity_params
-    {
-      name: "",
-      description: "A description",
-      email: "anemail@email.com",
-      phone_number: 23401924,
-      location: "world",
-    }
+    params = valid_entity_params
+    params['name'] = ""
+    params
   end
   
   def valid_article_params
