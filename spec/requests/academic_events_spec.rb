@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe 'AcademeicEvents API', type: :request do
-  let!(:academic_events) { create_list(:academic_evemt, 10) }
-  let(:academic_evemt) { AcademeicEvents.first }
+RSpec.describe 'AcademicEvents API', type: :request do
+  let!(:academic_events) { create_list(:academic_event, 10) }
+  let(:academic_event) { academic_events.first }
 
-  describe 'GET /academeic_events' do
-    before { get '/academeic_events' }
+  describe 'GET /academic_events' do
+    before { get '/academic_events' }
 
-    it 'should return all AcademeicEvents' do
+    it 'should return all AcademicEvents' do
       expect(json.size).to eq(10)
     end
     
@@ -16,10 +16,10 @@ RSpec.describe 'AcademeicEvents API', type: :request do
     end
   end
 
-  describe 'POST /academeic_events' do
+  describe 'POST /academic_events' do
     context 'with valid parameters' do
-      before { post '/academeic_events', params: valid_academic_event_params }
-      it 'should create an academic_evemt' do
+      before { post '/academic_events', params: valid_academic_event_params }
+      it 'should create an academic_event' do
         expect(json).not_to be_empty
       end
 
@@ -40,9 +40,9 @@ RSpec.describe 'AcademeicEvents API', type: :request do
     end
   end
 
-  describe 'PUT /academeic_events/:id' do
+  describe 'PUT /academic_events/:id' do
     context 'with valid parameters' do
-      before { put "/academic_events/#{academic_evemt.id}", params: valid_academic_event_params }
+      before { put "/academic_events/#{academic_event.id}", params: valid_academic_event_params }
       it 'should return status of 204' do
         expect(response).to have_http_status(204)
       end
@@ -51,7 +51,7 @@ RSpec.describe 'AcademeicEvents API', type: :request do
     context 'with invalid parameters' do
       before { put "/academic_events/300", params: valid_academic_event_params }
       it 'should raise an error' do
-        expect(response.body).to match(/Couldn't find Academic evemt/)
+        expect(response.body).to match(/Couldn't find AcademicEvent/)
       end
 
       it 'should return status of 404' do
@@ -60,9 +60,9 @@ RSpec.describe 'AcademeicEvents API', type: :request do
     end
   end
 
-  describe 'DELETE /academeic_events/:id' do
+  describe 'DELETE /academic_events/:id' do
     context 'with valid parameters' do
-      before { delete "/academic_events/#{academic_evemt.id}" }
+      before { delete "/academic_events/#{academic_event.id}" }
       it 'should return status of 204' do
         expect(response).to have_http_status(204)
       end
@@ -71,7 +71,7 @@ RSpec.describe 'AcademeicEvents API', type: :request do
     context 'with invalid parameters' do
       before { delete "/academic_events/300" }
       it 'should raise an error' do
-        expect(response.body).to match(/Couldn't find Academic evemt/)
+        expect(response.body).to match(/Couldn't find AcademicEvent/)
       end
 
       it 'should return status of 404' do
