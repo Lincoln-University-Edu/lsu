@@ -75,4 +75,19 @@ module RequestSpecHelper
     params = valid_article_params
     params["author_name"] = ""
   end
+
+  def valid_academic_event_params
+    {
+      datetime: Date.today,
+      name: "Some fancy name",
+      description: "Some fancy description",
+      location: "here",
+    }
+  end
+
+  def invalid_academic_event_params
+    params = valid_academic_event_params
+    params['name'] = ""
+    params
+  end
 end
