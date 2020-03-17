@@ -90,4 +90,16 @@ module RequestSpecHelper
     params['name'] = ""
     params
   end
+
+  def valid_major_params
+    {
+      name: "Some fancy name",
+    }
+  end
+
+  def invalid_major_params
+    {
+      name: "",
+    }
+  end
 end
