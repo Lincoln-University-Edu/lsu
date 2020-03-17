@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :entities, only: %i[ index create update destroy ]
   post '/entities/:id/users/new', to: 'entities#add_user'
   delete '/entities/:id/users/:user_id', to: 'entities#remove_user'
+  resources :academic_events, only: %i[ create index update destroy ]
 end
