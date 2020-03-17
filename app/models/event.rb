@@ -1,7 +1,6 @@
 class Event < ApplicationRecord
   validates :datetime, :name, :description, :location, :price, :external_link, :event_keywords, presence: true
   belongs_to :entity
-  has_many :organisations, dependent: :destroy
   has_many :keywordings, as: :keywordable, dependent: :destroy
   has_many :keywords, through: :keywordings
 
