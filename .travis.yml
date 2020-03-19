@@ -1,4 +1,6 @@
 
+sudo: required
+
 language: ruby
 rvm: 2.5.1
 env: 
