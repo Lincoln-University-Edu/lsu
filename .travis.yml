@@ -1,14 +1,19 @@
-
-sudo: required
-
 language: ruby
 rvm: 2.5.1
-env: 
-  - RAILS_ENV=test
+
 before_script:
-  - "psql -c 'create database api_test;' -U postgres"
-  - "cp ./.travis.database.yml ./config/database.yml"
-script: 
-  - bundle exec rake db:schema:load
-  - bundle exec rake db:test:prepare
-  - bundle exec rake spec
+- "psql -c 'create database api_test;' -U postgres"
+- "cp ./.travis.database.yml ./config/database.yml"
+
+addons:
+apt:
+  sources:
+  - precise-pgdg-9.5
+  packages:
+  - postgresql-9.5
+  - postgresql-contrib-9.5
+postgresql: 9.5
+chrome: stable
+
+
+dist: trusty
