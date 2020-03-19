@@ -1,4 +1,14 @@
 language: ruby
-rvm:
- - 2.5.1
- - jruby
+rvm: 2.5.1
+
+addons:
+apt:
+  sources:
+  - precise-pgdg-9.5
+  packages:
+  - postgresql-9.5
+  - postgresql-contrib-9.5
+postgresql: 9.5
+chrome: stable
+
+dist: trusty
