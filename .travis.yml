@@ -1,19 +1,9 @@
 language: ruby
 rvm: 2.5.1
 
+services:
+  postgresql
+
 before_script:
 - "psql -c 'create database api_test;' -U postgres"
-- "cp ./.travis.database.yml ./config/database.yml"
-
-addons:
-apt:
-  sources:
-  - precise-pgdg-9.5
-  packages:
-  - postgresql-9.5
-  - postgresql-contrib-9.5
-postgresql: 9.5
-chrome: stable
-
-
-dist: trusty
+- cp config/database.yml.travis config/database.yml
