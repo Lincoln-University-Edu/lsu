@@ -8,7 +8,6 @@ class StudentWiresController < ApplicationController
 
   def create
     student_wire = StudentWire.create!(student_wire_params)
-    p student_wire
     json_response(student_wire, :created)
   end
 
