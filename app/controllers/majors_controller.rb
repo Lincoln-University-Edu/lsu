@@ -27,10 +27,6 @@ class MajorsController < ApplicationController
     @major = Major.find(params[:id])
   end
 
-  def set_entity
-    @entity = Major.find(params[:entity_id])
-  end
-
   def major_params
     params.permit(:name)
   end
