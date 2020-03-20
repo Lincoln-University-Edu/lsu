@@ -3,9 +3,10 @@ require 'rails_helper'
 RSpec.describe 'Articles API', type: :request do
   let!(:articles) { create_list(:article, 10) }
   let(:article) { articles.first }
+  let(:user) { create(:user) }
 
   describe 'GET /articles' do
-    before { get '/articles' }
+    before { get '/articles', headers: valid_headers }
 
     it 'should return all articles' do
       expect(json.size).to eq(10)
@@ -18,7 +19,7 @@ RSpec.describe 'Articles API', type: :request do
 
   describe 'POST /articles' do
     context 'with valid parameters' do
-      before { post '/articles', params: valid_article_params }
+      before { post '/articles', params: valid_article_params, headers: valid_headers }
       it 'should create an article' do
         expect(json).not_to be_empty
       end
@@ -29,7 +30,7 @@ RSpec.describe 'Articles API', type: :request do
     end
 
     context 'with invalid parameters' do
-      before { post "/articles", params: invalid_article_params }
+      before { post "/articles", params: invalid_article_params, headers: valid_headers }
       it 'should raise an error' do
         expect(response.body).to match(/Validation failed: Author name can't be blank/)
       end
@@ -42,14 +43,14 @@ RSpec.describe 'Articles API', type: :request do
 
   describe 'PUT /articles/:id' do
     context 'with valid parameters' do
-      before { put "/articles/#{article.id}", params: valid_article_params }
+      before { put "/articles/#{article.id}", params: valid_article_params, headers: valid_headers }
       it 'should return status of 204' do
         expect(response).to have_http_status(204)
       end
     end
 
     context 'with invalid parameters' do
-      before { put "/articles/300", params: valid_article_params }
+      before { put "/articles/300", params: valid_article_params, headers: valid_headers }
       it 'should raise an error' do
         expect(response.body).to match(/Couldn't find Article with 'id'=300/)
       end
@@ -62,14 +63,14 @@ RSpec.describe 'Articles API', type: :request do
 
   describe 'DELETE /articles/:id' do
     context 'with valid parameters' do
-      before { delete "/articles/#{article.id}" }
+      before { delete "/articles/#{article.id}", headers: valid_headers }
       it 'should return status of 204' do
         expect(response).to have_http_status(204)
       end
     end
 
     context 'with invalid parameters' do
-      before { delete "/articles/300" }
+      before { delete "/articles/300", headers: valid_headers }
       it 'should raise an error' do
         expect(response.body).to match(/Couldn't find Article with 'id'=300/)
       end

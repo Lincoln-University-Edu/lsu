@@ -3,9 +3,10 @@ require 'rails_helper'
 RSpec.describe 'Events API', type: :request do
   let!(:events) { create_list(:event, 10) }
   let(:event) { events.first }
+  let(:user) { create(:user) }
 
   describe 'GET /events' do
-    before { get '/events' }
+    before { get '/events', headers: valid_headers }
 
     it 'should return all events' do
       expect(json.size).to eq(10)
@@ -18,7 +19,7 @@ RSpec.describe 'Events API', type: :request do
 
   describe 'POST /events' do
     context 'with valid parameters' do
-      before { post '/events', params: valid_event_params }
+      before { post '/events', params: valid_event_params, headers: valid_headers }
       it 'should create an event' do
         expect(json).not_to be_empty
       end
@@ -29,7 +30,7 @@ RSpec.describe 'Events API', type: :request do
     end
 
     context 'with invalid parameters' do
-      before { post "/events", params: invalid_event_params }
+      before { post "/events", params: invalid_event_params, headers: valid_headers }
       it 'should raise an error' do
         expect(response.body).to match(/Validation failed: Name can't be blank/)
       end
@@ -42,14 +43,14 @@ RSpec.describe 'Events API', type: :request do
 
   describe 'PUT /events/:id' do
     context 'with valid parameters' do
-      before { put "/events/#{event.id}", params: valid_event_params }
+      before { put "/events/#{event.id}", params: valid_event_params, headers: valid_headers }
       it 'should return status of 204' do
         expect(response).to have_http_status(204)
       end
     end
 
     context 'with invalid parameters' do
-      before { put "/events/300", params: valid_event_params }
+      before { put "/events/300", params: valid_event_params, headers: valid_headers }
       it 'should raise an error' do
         expect(response.body).to match(/Couldn't find Event/)
       end
@@ -62,14 +63,14 @@ RSpec.describe 'Events API', type: :request do
 
   describe 'DELETE /events/:id' do
     context 'with valid parameters' do
-      before { delete "/events/#{event.id}" }
+      before { delete "/events/#{event.id}", headers: valid_headers }
       it 'should return status of 204' do
         expect(response).to have_http_status(204)
       end
     end
 
     context 'with invalid parameters' do
-      before { delete "/events/300" }
+      before { delete "/events/300", headers: valid_headers }
       it 'should raise an error' do
         expect(response.body).to match(/Couldn't find Event/)
       end

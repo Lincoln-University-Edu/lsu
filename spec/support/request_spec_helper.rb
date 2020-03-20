@@ -102,4 +102,41 @@ module RequestSpecHelper
       name: "",
     }
   end
+
+  def valid_promotion_params
+    user = User.create!(valid_user_params)
+    {
+      title: "Some title",
+      description: "Some sample description",
+      email: "some@email.com",
+      phone_number: "1283104123",
+      price: "2.33",
+      category: "Some category",
+      condition: "Some condition",
+      user: user,
+    }
+  end
+
+  def invalid_promotion_params
+    params = valid_promotion_params
+    params["title"] = ""
+    params
+  end
+
+  def valid_student_wire_params
+    {
+      contact: "contact@me.com",
+      title: "Some fancy title",
+      body: "Some body text",
+      cover_image: "cover@image.com",
+      external_link: "external@link.com",
+      student_wire_keywords: "keyword1, keyword2"
+    }
+  end
+
+  def invalid_student_wire_params
+    params = valid_student_wire_params
+    params['contact'] = ""
+    params
+  end
 end

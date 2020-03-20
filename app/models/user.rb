@@ -6,9 +6,10 @@ class User < ApplicationRecord
   has_many :majors, through: :majorings
   has_many :organizations, dependent: :destroy
   has_many :entities, through: :organizations
+  has_many :promotions
 
   def all_majors=(majors)
-    self.majors = majors.map do |major|
+    self.majors = majors.split(',').map do |major|
       Major.where(name: major.strip).first_or_create!
     end
   end

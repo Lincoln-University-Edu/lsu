@@ -6,7 +6,7 @@ RSpec.describe 'Entities API', type: :request do
   let(:user) { create(:user) }
 
   describe 'GET /entities' do
-    before { get '/entities' }
+    before { get '/entities', headers: valid_headers }
 
     it 'should return all Entities' do
       expect(json.size).to eq(10)
@@ -19,7 +19,7 @@ RSpec.describe 'Entities API', type: :request do
 
   describe 'POST /entities' do
     context 'with valid parameters' do
-      before { post '/entities', params: valid_entity_params }
+      before { post '/entities', params: valid_entity_params, headers: valid_headers }
       it 'should create an entity' do
         expect(json).not_to be_empty
       end
@@ -30,7 +30,7 @@ RSpec.describe 'Entities API', type: :request do
     end
 
     context 'with invalid parameters' do
-      before { post "/entities", params: invalid_entity_params }
+      before { post "/entities", params: invalid_entity_params, headers: valid_headers }
       it 'should raise an error' do
         expect(response.body).to match(/Validation failed: Name can't be blank/)
       end
@@ -43,14 +43,14 @@ RSpec.describe 'Entities API', type: :request do
 
   describe 'PUT /entities/:id' do
     context 'with valid parameters' do
-      before { put "/entities/#{entity.id}", params: valid_entity_params }
+      before { put "/entities/#{entity.id}", params: valid_entity_params, headers: valid_headers }
       it 'should return status of 204' do
         expect(response).to have_http_status(204)
       end
     end
 
     context 'with invalid parameters' do
-      before { put "/entities/300", params: valid_entity_params }
+      before { put "/entities/300", params: valid_entity_params, headers: valid_headers }
       it 'should raise an error' do
         expect(response.body).to match(/Couldn't find Entity with 'id'=300/)
       end
@@ -63,14 +63,14 @@ RSpec.describe 'Entities API', type: :request do
 
   describe 'DELETE /entities/:id' do
     context 'with valid parameters' do
-      before { delete "/entities/#{entity.id}" }
+      before { delete "/entities/#{entity.id}", headers: valid_headers }
       it 'should return status of 204' do
         expect(response).to have_http_status(204)
       end
     end
 
     context 'with invalid parameters' do
-      before { delete "/entities/300" }
+      before { delete "/entities/300", headers: valid_headers }
       it 'should raise an error' do
         expect(response.body).to match(/Couldn't find Entity with 'id'=300/)
       end
@@ -85,7 +85,7 @@ RSpec.describe 'Entities API', type: :request do
 
   describe 'POST /entities/:id/users/new' do
     context 'with valid parameters' do
-      before { post "/entities/#{entity.id}/users/new", params: { user_id: user.id } }
+      before { post "/entities/#{entity.id}/users/new", params: { user_id: user.id }, headers: valid_headers }
 
       it 'should add the entity to the list of entities for the user' do
         expect(entity.users.include?(user)).to eq(true)
@@ -98,7 +98,7 @@ RSpec.describe 'Entities API', type: :request do
 
     context 'with invalid parameters' do
       context 'when user is invalid' do
-        before { post "/entities/#{entity.id}/users/new", params: { user_id: 300 } }
+        before { post "/entities/#{entity.id}/users/new", params: { user_id: 300 }, headers: valid_headers }
         it 'should raise an error' do
           expect(response.body).to match(/Couldn't find User/)
         end
@@ -110,7 +110,7 @@ RSpec.describe 'Entities API', type: :request do
 
   describe 'DELETE /entities/:id/users/:user_id' do
     context 'with valid parameters' do
-      before { delete "/entities/#{entity.id}/users/#{user.id}"}
+      before { delete "/entities/#{entity.id}/users/#{user.id}", headers: valid_headers }
 
       it 'should delete the entity from the list of entities for the user' do
         expect(entity.users.include?(user)).to eq(false)
@@ -123,7 +123,7 @@ RSpec.describe 'Entities API', type: :request do
 
     context 'with invalid parameters' do
       context 'when user is invalid' do
-        before { delete "/entities/#{entity.id}/users/#{300}" }
+        before { delete "/entities/#{entity.id}/users/#{300}", headers: valid_headers }
         it 'should raise an error' do
           expect(response.body).to match(/Couldn't find User/)
         end

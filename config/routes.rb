@@ -15,4 +15,8 @@ Rails.application.routes.draw do
   resources :academic_events, only: %i[ create index update destroy ]
 
   resources :majors, only: %i[ create index update destroy ]
+
+  resources :promotions, only: %i[ create index update destroy ]
+
+  resources :student_wires, only: %i[ create index update destroy ]
 end
