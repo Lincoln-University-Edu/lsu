@@ -41,4 +41,16 @@ add_column :users, :marital_status, default: "", null: false
 
 Note: default values and null constraints are optional
 
+### Including Associations
+Say you want to retrieve all the entities of a user along with the user information, you can set it up like so:
+
+#### Example
+* Head over to the user's controller
+* Create an action or use an existing action like `index`
+* Append the `as_json` method to the `users` object in the case of using the index action:
+```ruby
+@users = User.all.as_json(method: entities)
+```
+* Voila, the data returned will include all the entities in the user objects
+
 

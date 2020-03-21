@@ -21,7 +21,7 @@ The presence of the following are validated before the model is saved, hence you
 * location(string)
 * price(int)
 * external link(string)
-* keywords(array)
+* event_keywords(string)
 * category(string)
 
 ##### Validated at the database level

@@ -5,8 +5,10 @@ class Event < ApplicationRecord
   has_many :keywords, through: :keywordings
 
   def event_keywords=(keywords)
-    self.keywords = keywords.split(',').map do |keyword|
-      keyword = Keyword.where(name: keyword.strip).first_or_create!
+    if keywords
+      self.keywords = keywords.split(',').map do |keyword|
+        keyword = Keyword.where(name: keyword.strip).first_or_create!
+      end
     end
   end
 

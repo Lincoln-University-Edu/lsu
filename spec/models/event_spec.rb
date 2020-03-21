@@ -7,5 +7,6 @@ RSpec.describe Event, type: :model do
   it { should validate_presence_of(:location) }
   it { should validate_presence_of(:price) }
   it { should validate_presence_of(:external_link) }
+  it { should validate_presence_of(:event_keywords) }
   it { should belong_to(:entity) }
 end
