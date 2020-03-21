@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :event do
     entity
-    datetime { Faker::Date.forward(days: 23) }
+    start_time { Faker::Date.forward(days: 23) }
+    end_time { Faker::Date.forward(days: 24) }
     name { Faker::Book.title }
     description { Faker::Movies::StarWars.quote }
     location { Faker::Movies::StarWars.planet }

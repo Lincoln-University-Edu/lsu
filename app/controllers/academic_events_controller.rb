@@ -28,6 +28,6 @@ class AcademicEventsController < ApplicationController
   end
 
   def academic_event_params
-    params.permit(:datetime, :name, :description, :location)
+    params.permit(:start_time, :end_time, :name, :description, :location)
   end
 end
