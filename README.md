@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/Oluwadamilareolusakin/lsu.svg?token=wXpL6XoQW8AkgCZsxQVW&branch=master)](https://travis-ci.com/Oluwadamilareolusakin/lsu)
+
 # Licoln State University API
 
 A Ruby on Rails API backend for the front-facing Flutter Mobile app and React JS desktop app
@@ -19,10 +21,13 @@ It serves as the backend for the Flutter and React JS apps, providing CRUD funct
 
 ## Docs
 * [Models](doc/models)
+* [Auth](doc/auth)
+* [Controllers](doc/controllers)
+* [API Endpoints](doc/endpoints)
 
 ## Live Demo
 
-[Live Demo](https://moviejunkie.herokuapp.com)
+[Live Demo]()
 
 ## Getting Started
 
