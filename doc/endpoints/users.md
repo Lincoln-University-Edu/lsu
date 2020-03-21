@@ -1,15 +1,15 @@
 
 # The following endpoints are available for the users resource
 - GET `/users`
-*Returns a list of all users
+* Returns a list of all users
 
 - POST `/users`
-*Creates a user with valid params
+* Creates a user with valid params
 
 - PUT `/users/:id`
-*Updates a user with valid params
+* Updates a user with valid params
 
 - DELETE `/users/:id`
-*Deletes a user
+* Deletes a user
 
 #### Note: All endpoints except POST `users` require an authorization header as specified in the [Authorization Docs](../auth/authorization.md)
