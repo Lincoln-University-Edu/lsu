@@ -1,5 +1,12 @@
 # Available Models
-* [Events](events.md)
+* [Event](event.md)
+* [Article](article.md)
+* [Entity](entity.md)
+* [User](user.md)
+* [Major](major.md)
+* [Promotion](promotion.md)
+* [Student Wire](student_wire.md)
+* [Academic Event](academic_event.md)
 
 ### Creating a new model     
 To create a new model (add a new table to the database), follow the example below
