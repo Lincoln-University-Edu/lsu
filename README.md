@@ -21,10 +21,13 @@ It serves as the backend for the Flutter and React JS apps, providing CRUD funct
 
 ## Docs
 * [Models](doc/models)
+* [Auth](doc/auth)
+* [Controllers](doc/controllers)
+* [API Endpoints](doc/endpoints)
 
 ## Live Demo
 
-[Live Demo](https://moviejunkie.herokuapp.com)
+[Live Demo]()
 
 ## Getting Started
 
