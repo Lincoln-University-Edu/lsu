@@ -15,7 +15,8 @@ The events model is used in the creation of social/public events
 
 #### Validations
 The presence of the following are validated before the model is saved, hence you cannot create an event without them
-* datetime(datetime)
+* start_time(datetime)
+* end_time(datetime)
 * name(string)
 * description(string)
 * location(string)

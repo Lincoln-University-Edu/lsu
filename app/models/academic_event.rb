@@ -1,3 +1,3 @@
 class AcademicEvent < ApplicationRecord
-  validates :datetime, :name, :description, :location, presence: true
+  validates :start_time, :end_time, :name, :description, :location, presence: true
 end

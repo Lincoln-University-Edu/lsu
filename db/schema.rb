@@ -10,18 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_15_180021) do
+ActiveRecord::Schema.define(version: 2020_03_21_094821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "academic_events", force: :cascade do |t|
-    t.datetime "datetime"
+    t.datetime "start_time"
     t.string "name"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "location"
+    t.datetime "end_time"
   end
 
   create_table "articles", force: :cascade do |t|
@@ -49,7 +50,7 @@ ActiveRecord::Schema.define(version: 2020_03_15_180021) do
 
   create_table "events", force: :cascade do |t|
     t.bigint "entity_id", null: false
-    t.datetime "datetime"
+    t.datetime "start_time"
     t.string "name"
     t.string "description"
     t.string "location"
@@ -58,6 +59,7 @@ ActiveRecord::Schema.define(version: 2020_03_15_180021) do
     t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "end_time"
     t.index ["entity_id"], name: "index_events_on_entity_id"
   end
 

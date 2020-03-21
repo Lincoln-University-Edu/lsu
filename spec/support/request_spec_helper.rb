@@ -28,7 +28,8 @@ module RequestSpecHelper
       description: "A description",
       name: "A name",
       entity_id: entity.id,
-      datetime: Time.now,
+      start_time: Time.now,
+      end_time: (Time.now+10),
       location: "The earth",
       price: 2.33, 
       external_link: "somefancyurl.com",
@@ -78,7 +79,8 @@ module RequestSpecHelper
 
   def valid_academic_event_params
     {
-      datetime: Date.today,
+      start_time: Date.today,
+      end_time: (Time.now+10),
       name: "Some fancy name",
       description: "Some fancy description",
       location: "here",

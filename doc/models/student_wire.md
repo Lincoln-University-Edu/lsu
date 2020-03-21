@@ -1,5 +1,5 @@
 ### Student Wire
-The student wire model is used in the creation of social/public student wire
+The `studentwire` model is used in the creation of student news
 
 #### Attributes
 * id(PK)
