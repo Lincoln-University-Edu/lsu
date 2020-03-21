@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/Oluwadamilareolusakin/lsu.svg?token=wXpL6XoQW8AkgCZsxQVW&branch=master)](https://travis-ci.com/Oluwadamilareolusakin/lsu)
+
 # Licoln State University API
 
 A Ruby on Rails API backend for the front-facing Flutter Mobile app and React JS desktop app
