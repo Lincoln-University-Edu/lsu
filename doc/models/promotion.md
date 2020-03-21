@@ -1,5 +1,5 @@
 ### Promotion
-The promotion model is used in the creation of social/public promotion
+The `promotion` model is used in the creation of promotions(ads)
 
 #### Attributes
 * id(PK)
@@ -24,7 +24,7 @@ The following attributes are validated as a result of the belongs_to association
 * user_id
 
 * What does this mean? 
-A user must create an promotion like so: 
+A user must create a `promotion` like so: 
 ```ruby
 user = User.create!(user_params)
 promotion = user.promotions.create!(promotion_params)
