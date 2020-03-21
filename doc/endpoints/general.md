@@ -10,4 +10,3 @@ RESTFUL ENDPOINTS are available for the following resources, giving access to CR
 [Majors](majors.md)
 [Promotions](promotions.md)
 [StudentWires](student_wires.md)
-
