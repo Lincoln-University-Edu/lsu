@@ -18,7 +18,7 @@ class AuthenticateUser
     if @user && @user.authenticate(password)
       auth_token = JsonWebToken.encode(user_id: @user.id)
 
-      return HashWithIndifferentAccess.new(user: @user, auth_token: auth_token)
+      return HashWithIndifferentAccess.new(user: @user.as_json(except: [:password_digest]), auth_token: auth_token)
     end
 
     raise(ExceptionHandler::AuthenticationError, Message.invalid_credentials)

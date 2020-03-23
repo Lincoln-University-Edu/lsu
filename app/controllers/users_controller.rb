@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   skip_before_action :authorize_request, only: %i[ create ]
 
   def index
-    users = User.all
+    users = User.all.as_json(except: [:password_digest])
     json_response(users)
   end
 
