@@ -20,3 +20,15 @@ variable_for_credentials_containing_auth_token_and_user_object = AuthenticateUse
 # Output => {user: user_object, auth_token: some_encoded_token_you_can_use_in_subsequent_requests}
 ```
 #### Code Example
+```javascript
+const loginFunction = (email, password) => {
+  const params = {
+    email,
+    password
+  };
+
+  await axios.post('api-base-url.com', params);
+
+  // Do some neat trick after login
+};
+```
