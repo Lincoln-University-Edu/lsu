@@ -26,9 +26,13 @@ const loginFunction = (email, password) => {
     email,
     password
   };
+  
+  try {
+    await axios.post('api-base-url.com', params  
+    // Do some neat trick after login
+  } catch(error) {
+    // handle errors
+  }
 
-  await axios.post('api-base-url.com', params);
-
-  // Do some neat trick after login
 };
 ```
