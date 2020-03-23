@@ -24,7 +24,7 @@ variable_for_credentials_containing_auth_token_and_user_object = AuthenticateUse
 const loginFunction = (email, password) => {
   const params = {
     email,
-    password
+    password,
   };
   
   try {
