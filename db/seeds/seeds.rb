@@ -22,7 +22,7 @@ body =
     ',
     article_keywords: "the best, simply the best, the very best",
     cover_image: "https://images.unsplash.com/photo-1584952574167-560f02ab3f3d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-    category: "Lincolnian"
+    article_category: "Lincolnian"
   )
 
 
@@ -46,6 +46,6 @@ body =
     ',
     article_keywords: "the best, simply the best, the very best",
     cover_image: "https://images.unsplash.com/photo-1584952574167-560f02ab3f3d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-    category: "Lincoln Press"
+    article_category: "Lincoln Press"
   )
 end
