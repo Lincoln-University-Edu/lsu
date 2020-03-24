@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_21_094821) do
+ActiveRecord::Schema.define(version: 2020_03_24_114557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,21 @@ ActiveRecord::Schema.define(version: 2020_03_21_094821) do
     t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "categorizings", force: :cascade do |t|
+    t.string "categorizable_type"
+    t.integer "categorizable_id"
+    t.bigint "category_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_categorizings_on_category_id"
   end
 
   create_table "entities", force: :cascade do |t|
@@ -76,6 +91,20 @@ ActiveRecord::Schema.define(version: 2020_03_21_094821) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "likings", force: :cascade do |t|
+    t.integer "likeable_id"
+    t.string "likeable_type"
+    t.bigint "like_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["like_id"], name: "index_likings_on_like_id"
   end
 
   create_table "majorings", force: :cascade do |t|

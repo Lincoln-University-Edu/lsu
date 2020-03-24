@@ -3,7 +3,9 @@ class Event < ApplicationRecord
   belongs_to :entity
   has_many :keywordings, as: :keywordable, dependent: :destroy
   has_many :keywords, through: :keywordings
-
+  has_one :categorizing, as: :categorizable
+  has_one :category, through: :categorizing
+  
   def event_keywords=(keywords)
     if keywords
       self.keywords = keywords.split(',').map do |keyword|
