@@ -20,7 +20,7 @@ require 'faker'
     location: Faker::Movies::StarWars.planet,
     price: 2.33,
     external_link: Faker::Internet.url,
-    article_category: "some category",
+    article_category: "Student Life",
     event_keywords: "some, fancy, event, keywords",
     entity_id: entity.id
   )
