@@ -15,6 +15,10 @@ RSpec.describe 'Articles API', type: :request do
     it 'should return status of 200' do
       expect(response).to have_http_status(200)
     end
+
+    it 'should include article category' do
+      expect(json.first['article_category']).not_to be_nil
+    end
   end
 
   describe 'POST /articles' do

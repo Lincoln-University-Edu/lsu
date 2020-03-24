@@ -3,12 +3,12 @@ class EventsController < ApplicationController
   before_action :set_entity, only: %i[ create ]
 
   def index
-   events = Event.all
+   events = Event.all.as_json(methods: :event_category, include: :entity)
    json_response(events)
   end
 
   def create
-    event = @entity.events.create!(event_params)
+    event = @entity.events.create!(event_params).as_json(methods: :event_category, include: :entity)
     json_response(event, :created)
   end
 

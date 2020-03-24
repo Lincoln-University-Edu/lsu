@@ -2,12 +2,12 @@ class PromotionsController < ApplicationController
   before_action :set_promotion, only: %i[ update destroy ]
 
   def index
-   promotions = Promotion.all
+   promotions = Promotion.all.as_json(methods: :promotion_category)
    json_response(promotions)
   end
 
   def create
-    promotion = @current_user.promotions.create!(promotion_params)
+    promotion = @current_user.promotions.create!(promotion_params).as_json(methods: :promotion_category)
     json_response(promotion, :created)
   end
 

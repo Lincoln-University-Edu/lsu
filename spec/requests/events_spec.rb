@@ -15,6 +15,14 @@ RSpec.describe 'Events API', type: :request do
     it 'should return status of 200' do
       expect(response).to have_http_status(200)
     end
+
+    it 'should include entity' do
+      expect(json.first['entity']).not_to be_nil
+    end
+
+    it 'should include event category' do
+      expect(json.first['event_category']).not_to be_nil
+    end
   end
 
   describe 'POST /events' do
