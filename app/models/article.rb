@@ -6,7 +6,7 @@ class Article < ApplicationRecord
   has_many :likings, as: :likeable
   has_many :likes, through: :likings
 
-  validates :author_name, :title, :description, :body, :article_keywords,:cover_image, :category, presence: true
+  validates :author_name, :title, :description, :body, :article_keywords,:cover_image, :article_category, presence: true
 
   def article_keywords=(keywords)
     self.keywords = keywords.split(",").map do |keyword|
@@ -17,5 +17,13 @@ class Article < ApplicationRecord
 
   def article_keywords
    self.keywords.map(&:name)
+  end
+
+  def article_category=(category)
+    self.category = Category.where(name: category).first_or_create!
+  end
+
+  def article_category
+    self.category(&:name)
   end
 end

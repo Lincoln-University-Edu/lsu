@@ -6,6 +6,6 @@ FactoryBot.define do
     body { Faker::Lorem.paragraphs(number: 10) }
     cover_image { Faker::Internet.url }
     article_keywords { "the best, the greatest, one more time" }
-    category { Faker::Music.genre }
+    article_category { Faker::Music.genre }
   end
 end

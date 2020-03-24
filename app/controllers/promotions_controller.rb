@@ -29,6 +29,6 @@ class PromotionsController < ApplicationController
 
 
   def promotion_params
-    params.permit( :title, :description,:email, :phone_number,:price, :category, :condition)
+    params.permit( :title, :description,:email, :phone_number,:price, :promotion_category, :condition)
   end
 end

@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.permit(:author_name, :title, :body, :description, :cover_image, :article_keywords, :category, )
+    params.permit(:author_name, :title, :body, :description, :cover_image, :article_keywords, :article_category, )
   end
 
   def set_article

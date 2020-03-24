@@ -8,7 +8,7 @@ FactoryBot.define do
     location { Faker::Movies::StarWars.planet }
     price { 2.33 }
     external_link { Faker::Internet.url }
-    category { Faker::Music.genre }
+    event_category { Faker::Music.genre }
     event_keywords { "some, fancy, event, keywords" }
   end
 end

@@ -34,7 +34,7 @@ module RequestSpecHelper
       price: 2.33, 
       external_link: "somefancyurl.com",
       event_keywords: "some, fancy, keywords",
-      category: "the best",
+      event_category: "the best",
     }
   end
 
@@ -68,7 +68,7 @@ module RequestSpecHelper
       description: "Some random description",
       cover_image: "Some random bit of text",
       article_keywords: "Some, random, bit, of, text",
-      category: "Some random category",
+      article_category: "Some random category",
     }
   end
 
@@ -113,7 +113,7 @@ module RequestSpecHelper
       email: "some@email.com",
       phone_number: "1283104123",
       price: "2.33",
-      category: "Some category",
+      promotion_category: "Some category",
       condition: "Some condition",
       user: user,
     }
