@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/Oluwadamilareolusakin/lsu.svg?token=wXpL6XoQW8AkgCZsxQVW&branch=master)](https://travis-ci.com/Oluwadamilareolusakin/lsu)
 
-# Licoln State University API
+# Lincoln University API
 
 A Ruby on Rails API backend for the front-facing Flutter Mobile app and React JS desktop app
 
@@ -60,7 +60,7 @@ Contributions, issues and feature requests are welcome! Start by:
 
 ##### Please feel free to contribute to any of these!
 
-Feel free to check the [issues page](https://github.com/Oluwadamilareolusakin/movie-junkie-api/issues).
+Feel free to check the [issues page](https://github.com/Oluwadamilareolusakin/lsu/issues).
 
 ## Show your support
 
