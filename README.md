@@ -7,11 +7,6 @@ A Ruby on Rails API backend for the front-facing Flutter Mobile app and React JS
 # What it does
 It serves as the backend for the Flutter and React JS apps, providing CRUD functionality for both
 
-## Built With
-- Ruby on Rails API
-- JWT(JSON Web Token)
-- Postgresql
-
 ## Tests Written With
 - RSpec
 - Shoulda Matchers
