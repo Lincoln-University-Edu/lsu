@@ -1,7 +1,7 @@
 class Promotion < ApplicationRecord
   belongs_to :user
   has_one :categorizing, as: :categorizable
-  has_one :category, through: :categorizing
+  has_one :category, through: :categorizing, dependent: :destroy
   has_many :keywordings, as: :keywordable, dependent: :destroy
   has_many :keywords, through: :keywordings
   validates :title, :description, :email, :phone_number, :price, :promotion_category, :condition, presence: true
@@ -11,6 +11,8 @@ class Promotion < ApplicationRecord
   end
 
   def promotion_category
-    self.category(&:name)
+    if self.category
+      self.category.name
+    end
   end
 end
