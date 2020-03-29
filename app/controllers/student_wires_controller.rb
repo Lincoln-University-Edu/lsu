@@ -3,8 +3,7 @@ class StudentWiresController < ApplicationController
   before_action :check_student_wire_authorization, except: %i[ index ]
 
   def index
-   student_wires = StudentWire.all
-   json_response(student_wires)
+    paginate StudentWire.all, per_page: 15
   end
 
   def create

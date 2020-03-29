@@ -3,8 +3,7 @@ class UsersController < ApplicationController
   skip_before_action :authorize_request, only: %i[ create ]
 
   def index
-    users = User.all
-    json_response(users)
+    paginate User.all, per_page: 15
   end
 
   def create
