@@ -24,6 +24,8 @@ class Article < ApplicationRecord
   end
 
   def article_category
-    self.category(&:name)
+    if self.category
+      self.category.name
+    end
   end
 end

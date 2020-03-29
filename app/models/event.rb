@@ -24,6 +24,8 @@ class Event < ApplicationRecord
   end
 
   def event_category
-    self.category(&:name)
+    if self.category
+      self.category.name
+    end
   end
 end
