@@ -4,12 +4,12 @@ class ArticlesController < ApplicationController
   before_action :check_existing_article_category, except: %i[ index create ]
 
   def index
-   articles = Article.all.as_json(methods: :article_category)
+   articles = Article.all
    json_response(articles)
   end
 
   def create
-    article = Article.create!(article_params).as_json(methods: :article_category)
+    article = Article.create!(article_params)
     json_response(article, :created)
   end
 
@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.permit(:author_name, :title, :body, :description, :cover_image, :article_keywords, :article_category, )
+    params.permit(:author_name, :title, :body, :description, :cover_image, :article_keywords, :article_category,)
   end
 
   def set_article
