@@ -1,5 +1,6 @@
 class StudentWiresController < ApplicationController
   before_action :set_student_wire, only: %i[ update destroy ]
+  before_action :check_student_wire_authorization, except: %i[ index ]
 
   def index
    student_wires = StudentWire.all
@@ -30,5 +31,11 @@ class StudentWiresController < ApplicationController
 
   def student_wire_params
     params.permit( :contact, :title, :body, :cover_image, :external_link, :student_wire_keywords)
+  end
+
+  def check_student_wire_authorization
+    unless current_user.is_student_wire_editor
+      raise(ExceptionHandler::AuthenticationError, 'You are not a student wire editor')
+    end
   end
 end
