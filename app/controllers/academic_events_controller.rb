@@ -1,5 +1,6 @@
 class AcademicEventsController < ApplicationController
   before_action :set_academic_event, only: %i[ destroy update ]
+  before_action :check_user_role, except: %i[ index ]
 
   def index
     academic_events = AcademicEvent.all
@@ -29,5 +30,9 @@ class AcademicEventsController < ApplicationController
 
   def academic_event_params
     params.permit(:start_time, :end_time, :name, :description, :location)
+  end
+
+  def check_user_role
+    raise(ExceptionHandler::AuthenticationError, "You are not an Academic Event Publisher") unless current_user.is_academic_event_publisher
   end
 end
