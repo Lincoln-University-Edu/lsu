@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_24_114557) do
+ActiveRecord::Schema.define(version: 2020_03_28_031911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 2020_03_24_114557) do
     t.string "description"
     t.text "body"
     t.string "cover_image"
-    t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -163,6 +162,12 @@ ActiveRecord::Schema.define(version: 2020_03_24_114557) do
     t.string "first_name", default: "", null: false
     t.string "last_name", default: "", null: false
     t.integer "student_class"
+    t.boolean "is_lincoln_press_publisher", default: false, null: false
+    t.boolean "is_lincolnian_publisher", default: false, null: false
+    t.boolean "is_student_wire_editor", default: false, null: false
+    t.boolean "is_student_life_event_publisher", default: false, null: false
+    t.boolean "is_academic_event_publisher", default: false, null: false
+    t.boolean "is_athletic_event_publisher", default: false, null: false
   end
 
   add_foreign_key "events", "entities"

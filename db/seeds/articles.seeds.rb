@@ -1,6 +1,5 @@
 require 'faker'
 
-body = 
 
 10.times.each do
   # Create Lincolnian Articles
