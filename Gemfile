@@ -18,6 +18,9 @@ gem 'active_model_serializers'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# Use pagy and pager_api for pagination
+gem 'pagy'
+gem 'pager_api'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
