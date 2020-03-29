@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :majors, through: :majorings
   has_many :organizations, dependent: :destroy
   has_many :entities, through: :organizations
-  has_many :promotions
+  has_many :promotions, dependent: :destroy
 
   def all_majors=(majors)
     self.majors = majors.split(',').map do |major|
