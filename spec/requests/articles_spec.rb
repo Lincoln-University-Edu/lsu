@@ -9,7 +9,7 @@ RSpec.describe 'Articles API', type: :request do
     before { get '/articles', headers: valid_headers }
 
     it 'should return all articles' do
-      expect(json.size).to eq(10)
+      expect(json['articles'].size).to eq(10)
     end
     
     it 'should return status of 200' do
@@ -17,7 +17,7 @@ RSpec.describe 'Articles API', type: :request do
     end
 
     it 'should include article category' do
-      expect(json.first['article_category']).not_to be_nil
+      expect(json['articles'].first['article_category']).not_to be_nil
     end
   end
 
@@ -25,7 +25,7 @@ RSpec.describe 'Articles API', type: :request do
     context 'with valid parameters' do
       before { post '/articles', params: valid_article_params, headers: valid_headers }
       it 'should create an article' do
-        expect(json).not_to be_empty
+        expect(json['article']).not_to be_empty
       end
 
       it 'should return status of 201' do

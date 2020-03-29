@@ -9,7 +9,7 @@ RSpec.describe 'Majors API', type: :request do
     before { get '/majors', headers: valid_headers }
 
     it 'should return all Majors' do
-      expect(json.size).to eq(10)
+      expect(json['majors'].size).to eq(10)
     end
     
     it 'should return status of 200' do
@@ -21,7 +21,7 @@ RSpec.describe 'Majors API', type: :request do
     context 'with valid parameters' do
       before { post '/majors', params: valid_major_params, headers: valid_headers }
       it 'should create an major' do
-        expect(json).not_to be_empty
+        expect(json['major']).not_to be_empty
       end
 
       it 'should return status of 201' do

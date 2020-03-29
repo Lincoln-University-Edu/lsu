@@ -9,7 +9,7 @@ RSpec.describe 'Promotions API', type: :request do
     before { get '/promotions', headers: valid_headers }
 
     it 'should return all promotions' do
-      expect(json.size).to eq(10)
+      expect(json['promotions'].size).to eq(10)
     end
     
     it 'should return status of 200' do
@@ -17,7 +17,7 @@ RSpec.describe 'Promotions API', type: :request do
     end
 
     it 'should include promotion category' do
-      expect(json.first['promotion_category']).not_to be_nil
+      expect(json['promotions'].first['promotion_category']).not_to be_nil
     end
   end
 
@@ -25,7 +25,7 @@ RSpec.describe 'Promotions API', type: :request do
     context 'with valid parameters' do
       before { post '/promotions', params: valid_promotion_params, headers: valid_headers }
       it 'should create an promotion' do
-        expect(json).not_to be_empty
+        expect(json['promotion']).not_to be_empty
       end
 
       it 'should return status of 201' do

@@ -9,7 +9,7 @@ RSpec.describe 'Entities API', type: :request do
     before { get '/entities', headers: valid_headers }
 
     it 'should return all Entities' do
-      expect(json.size).to eq(10)
+      expect(json['entities'].size).to eq(10)
     end
     
     it 'should return status of 200' do
@@ -21,7 +21,7 @@ RSpec.describe 'Entities API', type: :request do
     context 'with valid parameters' do
       before { post '/entities', params: valid_entity_params, headers: valid_headers }
       it 'should create an entity' do
-        expect(json).not_to be_empty
+        expect(json['entity']).not_to be_empty
       end
 
       it 'should return status of 201' do

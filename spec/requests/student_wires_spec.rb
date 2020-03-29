@@ -9,7 +9,7 @@ RSpec.describe 'StudentWires API', type: :request do
     before { get '/student_wires', headers: valid_headers }
 
     it 'should return all student_wires' do
-      expect(json.size).to eq(10)
+      expect(json['student_wires'].size).to eq(10)
     end
     
     it 'should return status of 200' do
@@ -21,7 +21,7 @@ RSpec.describe 'StudentWires API', type: :request do
     context 'with valid parameters' do
       before { post '/student_wires', params: valid_student_wire_params, headers: valid_headers }
       it 'should create an student_wire' do
-        expect(json).not_to be_empty
+        expect(json['student_wire']).not_to be_empty
       end
 
       it 'should return status of 201' do

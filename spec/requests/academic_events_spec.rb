@@ -9,7 +9,7 @@ RSpec.describe 'AcademicEvents API', type: :request do
     before { get '/academic_events', headers: valid_headers }
 
     it 'should return all AcademicEvents' do
-      expect(json.size).to eq(10)
+      expect(json['academic_events'].size).to eq(10)
     end
     
     it 'should return status of 200' do
@@ -21,7 +21,7 @@ RSpec.describe 'AcademicEvents API', type: :request do
     context 'with valid parameters' do
       before { post '/academic_events', params: valid_academic_event_params, headers: valid_headers }
       it 'should create an academic_event' do
-        expect(json).not_to be_empty
+        expect(json['academic_event']).not_to be_empty
       end
 
       it 'should return status of 201' do

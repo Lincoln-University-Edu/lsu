@@ -9,7 +9,7 @@ RSpec.describe 'Events API', type: :request do
     before { get '/events', headers: valid_headers }
 
     it 'should return all events' do
-      expect(json.size).to eq(10)
+      expect(json['events'].size).to eq(10)
     end
     
     it 'should return status of 200' do
@@ -17,11 +17,11 @@ RSpec.describe 'Events API', type: :request do
     end
 
     it 'should include entity' do
-      expect(json.first['entity']).not_to be_nil
+      expect(json['events'].first['entity']).not_to be_nil
     end
 
     it 'should include event category' do
-      expect(json.first['event_category']).not_to be_nil
+      expect(json['events'].first['event_category']).not_to be_nil
     end
   end
 
@@ -29,7 +29,7 @@ RSpec.describe 'Events API', type: :request do
     context 'with valid parameters' do
       before { post '/events', params: valid_event_params, headers: valid_headers }
       it 'should create an event' do
-        expect(json).not_to be_empty
+        expect(json['event']).not_to be_empty
       end
 
       it 'should return status of 201' do

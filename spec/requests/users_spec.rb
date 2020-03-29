@@ -9,7 +9,7 @@ RSpec.describe 'Users API', type: :request do
     before { get '/users', headers: valid_headers }
 
     it 'should return all users' do
-      expect(json.size).to eq(10)
+      expect(json['users'].size).to eq(10)
     end
 
     it 'should return status of 200' do
@@ -23,7 +23,7 @@ RSpec.describe 'Users API', type: :request do
       before { post '/users', params: valid_user_params, headers: valid_headers }
 
       it 'should create a user' do
-        expect(json['first_name']).to eq('The Real')
+        expect(json['user']['first_name']).to eq('The Real')
       end
   
       it 'should return status of 201' do
