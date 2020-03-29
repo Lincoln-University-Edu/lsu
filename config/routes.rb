@@ -19,4 +19,8 @@ Rails.application.routes.draw do
   resources :promotions, only: %i[ create index update destroy ]
 
   resources :student_wires, only: %i[ create index update destroy ]
+
+  resources :keywords, only: %i[ create index update destroy ]
+
+  resources :categories, only: %i[ create index update destroy ]
 end
