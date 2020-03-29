@@ -5,12 +5,12 @@ class EventsController < ApplicationController
   before_action :check_existing_event_category, except: %i[ index create ]
 
   def index
-   events = Event.all.as_json(methods: :event_category, include: :entity)
+   events = Event.all
    json_response(events)
   end
 
   def create
-    event = @entity.events.create!(event_params).as_json(methods: :event_category, include: :entity)
+    event = @entity.events.create!(event_params)
     json_response(event, :created)
   end
 

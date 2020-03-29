@@ -2,12 +2,12 @@ class PromotionsController < ApplicationController
   before_action :set_promotion, only: %i[ update destroy ]
 
   def index
-   promotions = Promotion.all.as_json(methods: :promotion_category)
+   promotions = Promotion.all
    json_response(promotions)
   end
 
   def create
-    promotion = @current_user.promotions.create!(promotion_params).as_json(methods: :promotion_category)
+    promotion = @current_user.promotions.create!(promotion_params)
     json_response(promotion, :created)
   end
 
@@ -29,6 +29,6 @@ class PromotionsController < ApplicationController
 
 
   def promotion_params
-    params.permit( :title, :description,:email, :phone_number,:price, :promotion_category, :condition)
+    params.permit(:title, :description,:email, :phone_number,:price, :promotion_category, :condition)
   end
 end
