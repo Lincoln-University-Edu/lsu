@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ update destroy ]
+  before_action :check_new_article_category, except: %i[ index update destroy ]
+  before_action :check_existing_article_category, except: %i[ index create ]
 
   def index
    articles = Article.all.as_json(methods: :article_category)
@@ -30,5 +32,27 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-  
+  def check_new_article_category
+    if params[:article_category] == "Lincolnian"
+      raise(ExceptionHandler::AuthenticationError, 'You are not a Lincolnian Publisher') unless current_user.is_lincolnian_publisher
+      return
+    end
+
+    if params[:article_category] == "Lincoln Press"
+      raise(ExceptionHandler::AuthenticationError, 'You are not a Lincoln Press Publisher') unless current_user.is_lincoln_press_publisher
+    end
+  end
+
+  def check_existing_article_category
+    if @article.article_category == "Lincolnian"
+      raise(ExceptionHandler::AuthenticationError, 'You are not a Lincolnian Publisher') unless current_user.is_lincolnian_publisher
+      return
+    end
+
+    if @article.article_category == "Lincoln Press"
+      raise(ExceptionHandler::AuthenticationError, 'You are not a Lincoln Press Publisher') unless current_user.is_lincoln_press_publisher
+      return
+    end
+  end
+
 end
