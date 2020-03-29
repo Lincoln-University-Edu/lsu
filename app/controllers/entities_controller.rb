@@ -3,8 +3,7 @@ class EntitiesController < ApplicationController
   before_action :set_user, only: %i[ add_user remove_user ]
 
   def index
-   entities = Entity.all
-   json_response(entities)
+   paginate Entity.all, per_page: 15
   end
 
   def add_user

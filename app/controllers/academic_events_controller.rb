@@ -3,8 +3,7 @@ class AcademicEventsController < ApplicationController
   before_action :check_user_role, except: %i[ index ]
 
   def index
-    academic_events = AcademicEvent.all
-    json_response(academic_events)
+    paginate AcademicEvent.all, per_page: 15
   end 
 
   def create
