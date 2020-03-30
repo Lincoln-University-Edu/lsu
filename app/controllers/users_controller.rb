@@ -16,6 +16,10 @@ class UsersController < ApplicationController
     json_response(result, :created)
   end
 
+  def profile
+    json_response(current_user)
+  end
+
   def update
     @user.update(user_params)
     head :no_content

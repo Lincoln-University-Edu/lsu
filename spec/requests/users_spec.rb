@@ -63,6 +63,28 @@ RSpec.describe 'Users API', type: :request do
 
   end
 
+  describe 'GET /profile/:id' do
+
+    context 'when the record exists' do
+      before { get "/profile/#{user.id}", headers: valid_headers  }
+      it 'should return status 200' do
+        expect(response).to have_http_status(200)
+      end
+
+      it 'should return status 200' do
+        expect(json['user']).to eq(user)
+      end
+    end
+
+    context "when the record doesn't exist" do
+      before { get "/users/#{300}", headers: valid_headers  }
+      it 'should return status 200' do
+        expect(response.body).to match(/Couldn't find User/)
+      end
+    end
+
+  end
+
   describe 'PUT /users/:id' do
 
     context 'when the record exists' do
