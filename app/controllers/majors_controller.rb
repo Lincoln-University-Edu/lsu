@@ -1,5 +1,7 @@
 class MajorsController < ApplicationController
   before_action :set_major, only: %i[ update destroy ]
+  skip_before_action :authorize_request, only: %i[ index ]
+
 
   def index
    paginate Major.all, per_page: 15

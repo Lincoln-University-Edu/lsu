@@ -1,5 +1,6 @@
 class KeywordsController < ApplicationController
   before_action :set_keyword, only: %i[ destroy update ]
+  skip_before_action :authorize_request, only: %i[ index ]
 
   def index
     paginate Keyword.all, per_page: 15
