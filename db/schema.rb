@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_28_031911) do
+ActiveRecord::Schema.define(version: 2020_03_30_132230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,14 @@ ActiveRecord::Schema.define(version: 2020_03_28_031911) do
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "end_time"
     t.index ["entity_id"], name: "index_events_on_entity_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "url"
+    t.integer "imageable_id"
+    t.string "imageable_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "keywordings", force: :cascade do |t|

@@ -8,7 +8,8 @@ The `promotion` model is used in the creation of promotions(ads)
 * body(string)
 * cover_image(string url)
 * external_link(string url)
-* student_wire_keywords(string)
+* promotion_keywords(array)
+* promotion_image_urls(array)
 
 #### Validations
 The presence of the following are validated before the model is saved, hence you cannot create an user without them
@@ -17,7 +18,8 @@ The presence of the following are validated before the model is saved, hence you
 * body(string)
 * cover_image(string url)
 * external_link(string url)
-* student_wire_keywords(string)
+* promotion_keywords(string)
+* promotion_image_urls(array)
 
 ##### Validated at the database level
 The following attributes are validated as a result of the belongs_to association on this model. 
