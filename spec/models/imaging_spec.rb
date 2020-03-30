@@ -1,5 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Imaging, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should belong_to(:imageable) }
+  it { should belong_to(:image) }
 end
