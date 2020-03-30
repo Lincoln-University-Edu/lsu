@@ -72,7 +72,7 @@ RSpec.describe 'Users API', type: :request do
       end
 
       it 'should return status 200' do
-        expect(json['user']).to eq(user)
+        expect(json['user']['email']).to eq(user.email)
       end
     end
 
