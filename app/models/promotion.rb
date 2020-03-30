@@ -4,7 +4,8 @@ class Promotion < ApplicationRecord
   has_one :category, through: :categorizing, dependent: :destroy
   has_many :keywordings, as: :keywordable, dependent: :destroy
   has_many :keywords, through: :keywordings
-  has_many :images, as: :imageable, dependent: :destroy
+  has_many :imagings, as: :imageable, dependent: :destroy
+  has_many :images, through: :imagings
 
   validates :title, :description, :email, :phone_number, :price, :promotion_category, :condition, presence: true
 
@@ -19,14 +20,14 @@ class Promotion < ApplicationRecord
   end
 
   def promotion_image_urls=(urls)
-    self.images = urls.each do |url|
-      Image.where(url: url).first_or_create!
+    self.images = urls.split(',').map do |url|
+      Image.where(url: url.strip).first_or_create!
     end
   end
 
   def promotion_image_urls
     if self.images
-      self.images.map(&:name)
+      self.images.map(&:url)
     end
   end
 end

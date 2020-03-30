@@ -1,3 +1,5 @@
 class Image < ApplicationRecord
-  belongs_to :imageable, polymorphic: true
+  has_many :imagings, dependent: :destroy
+  has_many :imageables, through: :imagings
+  validates :url, presence: true
 end
