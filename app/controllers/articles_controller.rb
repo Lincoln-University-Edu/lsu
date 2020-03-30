@@ -1,11 +1,15 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: %i[ update destroy ]
+  before_action :set_article, only: %i[ show update destroy ]
   before_action :check_new_article_category, except: %i[ index update destroy ]
   before_action :check_existing_article_category, except: %i[ index create ]
 
   def index
    articles = Article.all
    json_response(articles)
+  end
+
+  def show
+    json_response(@article)
   end
 
   def create
@@ -29,7 +33,7 @@ class ArticlesController < ApplicationController
   end
 
   def set_article
-    @article = Article.find(params[:id])
+    @article = Article.find_by!(id: params[:id])
   end
 
   def check_new_article_category

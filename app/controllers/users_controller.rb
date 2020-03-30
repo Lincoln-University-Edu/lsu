@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ destroy update ]
+  before_action :set_user, only: %i[ show destroy update ]
   skip_before_action :authorize_request, only: %i[ create ]
 
   def index
     paginate User.all, per_page: 15
+  end
+
+  def show
+    json_response(@user)
   end
 
   def create
@@ -40,7 +44,7 @@ class UsersController < ApplicationController
     end
 
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find_by!(id: params[:id])
     end
 
 end

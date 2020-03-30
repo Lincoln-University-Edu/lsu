@@ -1,9 +1,13 @@
 class EntitiesController < ApplicationController
-  before_action :set_entity, only: %i[ update destroy add_user remove_user]
+  before_action :set_entity, only: %i[ show update destroy add_user remove_user]
   before_action :set_user, only: %i[ add_user remove_user ]
 
   def index
    paginate Entity.all, per_page: 15
+  end
+
+  def show
+    json_response(@entity)
   end
 
   def add_user

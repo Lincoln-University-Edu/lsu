@@ -1,5 +1,5 @@
 class StudentWiresController < ApplicationController
-  before_action :set_student_wire, only: %i[ update destroy ]
+  before_action :set_student_wire, only: %i[ show update destroy ]
   before_action :check_student_wire_authorization, except: %i[ index ]
 
   def index
@@ -9,6 +9,10 @@ class StudentWiresController < ApplicationController
   def create
     student_wire = StudentWire.create!(student_wire_params)
     json_response(student_wire, :created)
+  end
+
+  def show
+    json_response(@student_wire)
   end
 
   def update

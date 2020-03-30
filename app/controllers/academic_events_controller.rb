@@ -1,5 +1,5 @@
 class AcademicEventsController < ApplicationController
-  before_action :set_academic_event, only: %i[ destroy update ]
+  before_action :set_academic_event, only: %i[ show destroy update ]
   before_action :check_user_role, except: %i[ index ]
 
   def index
@@ -14,6 +14,10 @@ class AcademicEventsController < ApplicationController
   def update
     @academic_event.update(academic_event_params)
     head :no_content
+  end
+
+  def show
+    json_response(@academic_event)
   end
 
   def destroy

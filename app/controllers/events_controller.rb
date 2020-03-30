@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: %i[ update destroy ]
+  before_action :set_event, only: %i[ show update destroy ]
   before_action :set_entity, only: %i[ create ]
   before_action :check_new_event_category, only: %i[ create ]
   before_action :check_existing_event_category, except: %i[ index create ]
@@ -12,6 +12,10 @@ class EventsController < ApplicationController
   def create
     event = @entity.events.create!(event_params)
     json_response(event, :created)
+  end
+
+  def show
+    json_response(@event)
   end
 
   def update
@@ -27,11 +31,11 @@ class EventsController < ApplicationController
   private
 
   def set_event
-    @event = Event.find(params[:id])
+    @event = Event.find_by!(id: params[:id])
   end
 
   def set_entity
-    @entity = Entity.find(params[:entity_id])
+    @entity = Entity.find_by!(id: params[:entity_id])
   end
 
   def event_params
