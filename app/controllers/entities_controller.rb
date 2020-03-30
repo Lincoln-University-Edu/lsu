@@ -3,7 +3,7 @@ class EntitiesController < ApplicationController
   before_action :set_user, only: %i[ add_user remove_user ]
 
   def index
-   paginate Entity.all, per_page: 15
+   paginate Entity.all, per_page: 15, each_serializer: BasicEntitySerializer
   end
 
   def show
