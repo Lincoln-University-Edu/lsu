@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_30_132230) do
+ActiveRecord::Schema.define(version: 2020_03_30_181340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,10 +79,17 @@ ActiveRecord::Schema.define(version: 2020_03_30_132230) do
 
   create_table "images", force: :cascade do |t|
     t.string "url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "imagings", force: :cascade do |t|
+    t.bigint "image_id"
     t.integer "imageable_id"
     t.string "imageable_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["image_id"], name: "index_imagings_on_image_id"
   end
 
   create_table "keywordings", force: :cascade do |t|

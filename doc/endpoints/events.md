@@ -6,6 +6,9 @@
 - POST `/events`
 **Creates an event with valid params**
 
+- GET `/events/:id`
+**Returns an event with valid id**
+
 - PUT `/events/:id`
 **Updates an event with valid params**
 

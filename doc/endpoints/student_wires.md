@@ -6,6 +6,9 @@
 - POST `/student_wires`
 **Creates a student wire with valid params**
 
+- SHOW `/student_wires/:id`
+**Returns a student wire with valid id**
+
 - PUT `/student_wires/:id`
 **Updates a student wire with valid params**
 

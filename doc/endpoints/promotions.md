@@ -6,6 +6,9 @@
 - POST `/promotions`
 **Creates a promotion with valid params**
 
+- GET `/promotions/:id`
+**Returns a promotion with valid id**
+
 - PUT `/promotions/:id`
 **Updates a promotion with valid params**
 

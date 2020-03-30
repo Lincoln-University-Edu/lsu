@@ -2,23 +2,23 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   post '/auth/login', to: 'authentication#login'
   
-  resources :users, only: %i[ index create update destroy ]
+  resources :users, except: %i[ edit ]
 
-  resources :articles, only: %i[ index create update destroy ]
+  resources :articles, except: %i[ edit ]
 
-  resources :events, only: %i[ index create update destroy ]
+  resources :events, except: %i[ edit ]
 
-  resources :entities, only: %i[ index create update destroy ]
+  resources :entities, except: %i[ edit ]
   post '/entities/:id/users/new', to: 'entities#add_user'
   delete '/entities/:id/users/:user_id', to: 'entities#remove_user'
   
-  resources :academic_events, only: %i[ create index update destroy ]
+  resources :academic_events, except: %i[ edit ]
 
   resources :majors, only: %i[ create index update destroy ]
 
-  resources :promotions, only: %i[ create index update destroy ]
+  resources :promotions, except: %i[ edit ]
 
-  resources :student_wires, only: %i[ create index update destroy ]
+  resources :student_wires, except: %i[ edit ]
 
   resources :keywords, only: %i[ create index update destroy ]
 

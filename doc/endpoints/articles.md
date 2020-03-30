@@ -6,6 +6,9 @@
 - POST `/articles`
 **Creates an article with valid params**
 
+- GET `/articles/:id`
+**Returns an article with valid id**
+
 - PUT `/articles/:id`
 **Updates an article with valid params**
 

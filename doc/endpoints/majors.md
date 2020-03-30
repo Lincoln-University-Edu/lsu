@@ -6,6 +6,7 @@
 - POST `/majors`
 **Creates a major with valid params**
 
+
 - PUT `/majors/:id`
 **Updates a major with valid params**
 

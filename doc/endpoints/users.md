@@ -6,6 +6,9 @@
 - POST `/users`
 **Creates a user with valid params**
 
+- GET `/users/:id`
+**Returns a user with valid id**
+
 - PUT `/users/:id`
 **Updates a user with valid params**
 

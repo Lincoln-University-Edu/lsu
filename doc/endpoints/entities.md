@@ -6,6 +6,9 @@
 - POST `/entities`
 **Creates an entity with valid params**
 
+- SHOW `/entities/:id`
+**Returns an entity with valid id**
+
 - PUT `/entities/:id`
 **Updates an entity with valid params**
 

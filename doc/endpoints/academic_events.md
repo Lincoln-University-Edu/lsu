@@ -6,6 +6,9 @@
 - POST `/academic_events`
 **Creates an academic_event with valid params**
 
+- GET `/academic_events/:id`
+**Returns an academic_event with valid id**
+
 - PUT `/academic_events/:id`
 **Updates an academic_event with valid params**
 
