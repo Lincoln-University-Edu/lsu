@@ -22,6 +22,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'pagy'
 gem 'pager_api'
 
+# Use fcm for push notifications
+gem 'fcm'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
