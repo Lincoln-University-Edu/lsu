@@ -37,3 +37,5 @@ axios.get('api-url/events', headers: {'Authorization': 'auth_token'})
       }
   }
 ```
+* Parameters
+All index actions take the `page` parameter which defaults to `1` if not provided and raises an error if the page isn't valid
