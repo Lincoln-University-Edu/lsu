@@ -2,8 +2,7 @@ class MajorsController < ApplicationController
   before_action :set_major, only: %i[ update destroy ]
 
   def index
-   majors = Major.all
-   json_response(majors)
+   paginate Major.all, per_page: 15
   end
 
   def create

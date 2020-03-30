@@ -4,8 +4,7 @@ class ArticlesController < ApplicationController
   before_action :check_existing_article_category, except: %i[ index create ]
 
   def index
-   articles = Article.all
-   json_response(articles)
+   paginate Article.all, per_page: 15
   end
 
   def show

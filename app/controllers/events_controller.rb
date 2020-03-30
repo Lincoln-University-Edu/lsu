@@ -5,8 +5,7 @@ class EventsController < ApplicationController
   before_action :check_existing_event_category, except: %i[ index create ]
 
   def index
-   events = Event.all
-   json_response(events)
+    paginate Event.all, per_page: 15
   end
 
   def create

@@ -2,8 +2,7 @@ class PromotionsController < ApplicationController
   before_action :set_promotion, only: %i[ show update destroy ]
 
   def index
-   promotions = Promotion.all
-   json_response(promotions)
+    paginate Promotion.all, per_page: 15
   end
 
   def show

@@ -10,3 +10,30 @@ RESTFUL ENDPOINTS are available for the following resources, giving access to CR
 [Majors](majors.md)
 [Promotions](promotions.md)
 [StudentWires](student_wires.md)
+
+### Pagination
+Index requests on all resources are paginated to return 15 objects per page
+
+#### Example
+* Request
+```javascript
+axios.get('api-url/events', headers: {'Authorization': 'auth_token'})
+```
+* Result
+```JSON
+  {
+      "events": [...],
+      "meta": {
+          "pagination": {
+              "per_page": 15,
+              "total_pages": 2,
+              "total_objects": 20,
+              "links": {
+                  "first": "/events?page=1",
+                  "last": "/events?page=2",
+                  "next": "/events?page=2"
+              }
+          }
+      }
+  }
+```
