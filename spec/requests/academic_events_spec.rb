@@ -41,6 +41,22 @@ RSpec.describe 'AcademicEvents API', type: :request do
     end
   end
 
+  describe 'GET /academic_events/:id' do
+    context 'when record exists' do
+      before { get "/academic_events/#{academic_event.id}", headers: valid_headers }
+      it 'should return status of 200' do
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'when record does not exists' do
+      before { get "/academic_events/#{300}", headers: valid_headers }
+      it 'should raise an error' do
+        expect(response.body).to match(/Couldn't find AcademicEvent/)
+      end
+    end
+  end
+
   describe 'PUT /academic_events/:id' do
     context 'with valid parameters' do
       before { put "/academic_events/#{academic_event.id}", params: valid_academic_event_params, headers: valid_headers }

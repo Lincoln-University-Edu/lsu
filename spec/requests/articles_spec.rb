@@ -45,6 +45,22 @@ RSpec.describe 'Articles API', type: :request do
     end
   end
 
+  describe 'GET /articles/:id' do
+    context 'when the record exists' do
+      before { get "/articles/#{article.id}", headers: valid_headers }
+      it 'should return status of 200' do
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'when record does not exists' do
+      before { get "/articles/#{300}", headers: valid_headers }
+      it 'should raise an error' do
+        expect(response.body).to match(/Couldn't find Article/)
+      end
+    end
+  end
+
   describe 'PUT /articles/:id' do
     context 'with valid parameters' do
       before { put "/articles/#{article.id}", params: valid_article_params, headers: valid_headers }
@@ -56,7 +72,7 @@ RSpec.describe 'Articles API', type: :request do
     context 'with invalid parameters' do
       before { put "/articles/300", params: valid_article_params, headers: valid_headers }
       it 'should raise an error' do
-        expect(response.body).to match(/Couldn't find Article with 'id'=300/)
+        expect(response.body).to match(/Couldn't find Article/)
       end
 
       it 'should return status of 404' do
@@ -76,7 +92,7 @@ RSpec.describe 'Articles API', type: :request do
     context 'with invalid parameters' do
       before { delete "/articles/300", headers: valid_headers }
       it 'should raise an error' do
-        expect(response.body).to match(/Couldn't find Article with 'id'=300/)
+        expect(response.body).to match(/Couldn't find Article/)
       end
 
       it 'should return status of 404' do

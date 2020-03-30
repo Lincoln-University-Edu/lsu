@@ -49,6 +49,22 @@ RSpec.describe 'Events API', type: :request do
     end
   end
 
+  describe 'GET /events/:id' do
+    context 'when record exists' do
+      before { get "/events/#{event.id}", headers: valid_headers }
+      it 'should return status of 200' do
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'when record does not exist' do
+      before { get "/events/#{300}", headers: valid_headers }
+      it 'should raise an error' do
+        expect(response.body).to match(/Couldn't find Event/)
+      end
+    end
+  end
+
   describe 'PUT /events/:id' do
     context 'with valid parameters' do
       before { put "/events/#{event.id}", params: valid_event_params, headers: valid_headers }

@@ -115,6 +115,7 @@ module RequestSpecHelper
       price: "2.33",
       promotion_category: "Some category",
       condition: "Some condition",
+      promotion_image_urls: "url1.com, url2.com, url3.com",
       user: user,
     }
   end

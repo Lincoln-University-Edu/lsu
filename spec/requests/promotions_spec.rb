@@ -45,6 +45,22 @@ RSpec.describe 'Promotions API', type: :request do
     end
   end
 
+  describe 'GET /promotions/:id' do
+    context 'when record exists' do
+      before { get "/promotions/#{promotion.id}", headers: valid_headers }
+      it 'should return status of 200' do
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'when record does not exist' do
+      before { get "/promotions/#{300}", headers: valid_headers }
+      it 'should return status of 200' do
+        expect(response.body).to match(/Couldn't find Promotion/)
+      end
+    end
+  end
+
   describe 'PUT /promotions/:id' do
     context 'with valid parameters' do
       before { put "/promotions/#{promotion.id}", params: valid_promotion_params, headers: valid_headers }
@@ -56,7 +72,7 @@ RSpec.describe 'Promotions API', type: :request do
     context 'with invalid parameters' do
       before { put "/promotions/300", params: valid_promotion_params, headers: valid_headers }
       it 'should raise an error' do
-        expect(response.body).to match(/Couldn't find Promotion with 'id'=300/)
+        expect(response.body).to match(/Couldn't find Promotion/)
       end
 
       it 'should return status of 404' do
@@ -76,7 +92,7 @@ RSpec.describe 'Promotions API', type: :request do
     context 'with invalid parameters' do
       before { delete "/promotions/300", headers: valid_headers }
       it 'should raise an error' do
-        expect(response.body).to match(/Couldn't find Promotion with 'id'=300/)
+        expect(response.body).to match(/Couldn't find Promotion/)
       end
 
       it 'should return status of 404' do

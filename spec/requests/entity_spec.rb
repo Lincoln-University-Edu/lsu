@@ -41,6 +41,22 @@ RSpec.describe 'Entities API', type: :request do
     end
   end
 
+  describe 'GET /entities/:id' do
+    context 'when record exists' do
+      before { put "/entities/#{entity.id}", params: valid_entity_params, headers: valid_headers }
+      it 'should return status of 204' do
+        expect(response).to have_http_status(204)
+      end
+    end
+
+    context 'when record does not exists' do
+      before { get "/entities/#{300}", headers: valid_headers }
+      it 'should raise an error' do
+        expect(response.body).to match(/Couldn't find Entity/)
+      end
+    end
+  end
+
   describe 'PUT /entities/:id' do
     context 'with valid parameters' do
       before { put "/entities/#{entity.id}", params: valid_entity_params, headers: valid_headers }
@@ -52,7 +68,7 @@ RSpec.describe 'Entities API', type: :request do
     context 'with invalid parameters' do
       before { put "/entities/300", params: valid_entity_params, headers: valid_headers }
       it 'should raise an error' do
-        expect(response.body).to match(/Couldn't find Entity with 'id'=300/)
+        expect(response.body).to match(/Couldn't find Entity/)
       end
 
       it 'should return status of 404' do
@@ -72,7 +88,7 @@ RSpec.describe 'Entities API', type: :request do
     context 'with invalid parameters' do
       before { delete "/entities/300", headers: valid_headers }
       it 'should raise an error' do
-        expect(response.body).to match(/Couldn't find Entity with 'id'=300/)
+        expect(response.body).to match(/Couldn't find Entity/)
       end
 
       it 'should return status of 404' do

@@ -41,6 +41,22 @@ RSpec.describe 'StudentWires API', type: :request do
     end
   end
 
+  describe 'GET /student_wires/:id' do
+    context 'with valid parameters' do
+      before { get "/student_wires/#{student_wire.id}", headers: valid_headers }
+      it 'should return status of 200' do
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'with valid parameters' do
+      before { get "/student_wires/#{300}", headers: valid_headers }
+      it 'should return status of 200' do
+        expect(response.body).to match(/Couldn't find StudentWire/)
+      end
+    end
+  end
+
   describe 'PUT /student_wires/:id' do
     context 'with valid parameters' do
       before { put "/student_wires/#{student_wire.id}", params: valid_student_wire_params, headers: valid_headers }
