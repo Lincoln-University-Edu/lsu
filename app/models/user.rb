@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :organizations, dependent: :destroy
   has_many :entities, through: :organizations
   has_many :promotions, dependent: :destroy
+  has_many :keywordings, as: :keywordable
+  has_many :keywords, through: :keywordings
 
   def all_majors=(majors)
     self.majors = majors.split(',').map do |major|
@@ -18,5 +20,17 @@ class User < ApplicationRecord
 
   def all_majors
     self.majors.map(&:name)
+  end
+
+  def user_keywords=(keywords)
+    if keywords
+      self.keywords = keywords.split(",").map do |keyword|
+        Keyword.where(name: keyword.strip).first_or_create!
+      end
+    end
+  end
+
+  def user_keywords
+    self.keywords.map(&:name)
   end
 end
