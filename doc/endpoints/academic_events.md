@@ -18,4 +18,12 @@
 - DELETE `/academic_events/:id`
 **Deletes an academic_event**
 
+# Permitted Parameters
+* start_time
+* end_time
+* name
+* description
+* location)
+
+
 #### Note: All endpoints require an authorization header as specified in the [Authorization Docs](../auth/authorization.md)
