@@ -12,6 +12,7 @@ module RequestSpecHelper
       email: "email@address.com",
       password: "samplePassword",
       student_class: 2019,
+      user_keywords: "keyword1, keyword2, keyword3"
     }
   end
 
