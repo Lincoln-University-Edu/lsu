@@ -25,6 +25,12 @@ gem 'pager_api'
 # Use fcm for push notifications
 gem 'fcm'
 
+# Use sidekiq for background jobs
+gem 'sidekiq', '~>6.0.0'
+
+# Use redis 
+gem 'redis'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
