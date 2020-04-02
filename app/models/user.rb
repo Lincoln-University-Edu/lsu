@@ -33,4 +33,16 @@ class User < ApplicationRecord
   def user_keywords
     self.keywords.map(&:name)
   end
+
+  def user_entities=(entities)
+    if entities
+      self.entities = entities.split(",").map do |entity|
+        Entity.where(name: entity.strip).first_or_create!
+      end
+    end
+  end
+
+  def user_entities
+    self.entities.map(&:name)
+  end
 end
