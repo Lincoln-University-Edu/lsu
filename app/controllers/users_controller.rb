@@ -38,6 +38,7 @@ class UsersController < ApplicationController
         :email, 
         :password, 
         :user_keywords,
+        :user_entities,
         :student_class, 
         :all_majors, 
         :is_lincolian_press_publisher,
