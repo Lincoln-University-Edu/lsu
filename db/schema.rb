@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_30_181340) do
+ActiveRecord::Schema.define(version: 2020_04_04_151643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -183,6 +183,7 @@ ActiveRecord::Schema.define(version: 2020_03_30_181340) do
     t.boolean "is_student_life_event_publisher", default: false, null: false
     t.boolean "is_academic_event_publisher", default: false, null: false
     t.boolean "is_athletic_event_publisher", default: false, null: false
+    t.boolean "completed_registration", default: false, null: false
   end
 
   add_foreign_key "events", "entities"

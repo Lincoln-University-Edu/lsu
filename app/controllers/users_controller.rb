@@ -46,6 +46,7 @@ class UsersController < ApplicationController
         :is_student_life_event_publisher,
         :is_academic_event_publisher,
         :is_athletic_event_publisher,
+        :completed_registration
       )
     end
 
