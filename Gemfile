@@ -22,6 +22,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'pagy'
 gem 'pager_api'
 
+# Use pg search for search
+gem 'pg_search'
+
 # Use fcm for push notifications
 gem 'fcm'
 

@@ -116,6 +116,9 @@ GEM
     pager_api (0.3.2)
     pagy (3.7.4)
     pg (1.2.2)
+    pg_search (2.3.2)
+      activerecord (>= 5.2)
+      activesupport (>= 5.2)
     puma (4.3.3)
       nio4r (~> 2.0)
     rack (2.2.2)
@@ -220,6 +223,7 @@ DEPENDENCIES
   pager_api
   pagy
   pg
+  pg_search
   puma (~> 4.1)
   rack-cors
   rails (~> 6.0.2, >= 6.0.2.1)
