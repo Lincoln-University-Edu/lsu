@@ -1,4 +1,5 @@
 class PromotionsController < ApplicationController
+
   before_action :set_promotion, only: %i[ show update destroy ]
 
   def index
@@ -11,6 +12,13 @@ class PromotionsController < ApplicationController
 
   def create
     promotion = @current_user.promotions.create!(promotion_params)
+
+    serialized_promotion = ActiveModelSerializers::Adapter::Json.new(
+      PromotionSerializer.new(promotion)
+    ).serializable_hash
+
+    BroadcastPromotionWorker.perform_async(serialized_promotion)
+
     json_response(promotion, :created)
   end
 

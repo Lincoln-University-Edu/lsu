@@ -10,6 +10,13 @@ class EventsController < ApplicationController
 
   def create
     event = @entity.events.create!(event_params)
+
+    serialized_event = ActiveModelSerializers::Adapter::Json.new(
+      EventSerializer.new(event)
+    ).serializable_hash
+
+    BroadcastEventWorker.perform_async(serialized_event)
+
     json_response(event, :created)
   end
 

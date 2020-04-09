@@ -37,6 +37,7 @@ module RequestSpecHelper
       event_keywords: "some, fancy, keywords",
       event_category: "the best",
     }
+      
   end
 
   def invalid_event_params
@@ -63,13 +64,13 @@ module RequestSpecHelper
   
   def valid_article_params
     {
-      author_name: "Some random name",
-      title: "Some random title",
-      body: "Some random bit of text",
-      description: "Some random description",
-      cover_image: "Some random bit of text",
-      article_keywords: "Some, random, bit, of, text",
-      article_category: "Some random category",
+      "author_name": "Some random name",
+      "title": "Some random title",
+      "body": "Some random bit of text",
+      "description": "Some random description",
+      "cover_image": "Some random bit of text",
+      "article_keywords": "Some, random, bit, of, text",
+      "article_category": "Some random category",
     }
   end
 

@@ -1,8 +1,19 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  mount ActionCable.server => '/cable'
+  
   post '/auth/login', to: 'authentication#login'
   get '/profile/:id', to: 'users#profile'
   post '/send_push_notification', to: 'notifications#push_notifications'
+
+  post '/search_promotions', to: 'search#promotions'
+  post '/search_articles', to: 'search#articles'
+  post '/search_entities', to: 'search#entities'
+  post '/search_academic_events', to: 'search#academic_events'
+  post '/search_events', to: 'search#events'
+  post '/search_users', to: 'search#users'
+  post '/search_student_wires', to: 'search#student_wires'
 
   resources :users, except: %i[ edit ]
 

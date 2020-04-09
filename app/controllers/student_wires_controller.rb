@@ -8,6 +8,13 @@ class StudentWiresController < ApplicationController
 
   def create
     student_wire = StudentWire.create!(student_wire_params)
+
+    serialized_student_wire = ActiveModelSerializers::Adapter::Json.new(
+      StudentWireSerializer.new(student_wire)
+    ).serializable_hash
+
+    BroadcastStudentWireWorker.perform_async(serialized_student_wire)
+
     json_response(student_wire, :created)
   end
 

@@ -1,4 +1,7 @@
 class Promotion < ApplicationRecord
+  include PgSearch::Model
+  pg_search_scope :search_by_term, against: [ :title, :description, :condition, :price, :promotion_category ]
+
   belongs_to :user
   has_one :categorizing, as: :categorizable
   has_one :category, through: :categorizing, dependent: :destroy

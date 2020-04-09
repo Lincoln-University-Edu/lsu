@@ -13,8 +13,6 @@ gem 'puma', '~> 4.1'
 # gem 'jbuilder', '~> 2.7'
 gem 'active_model_serializers'
 
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
@@ -31,7 +29,7 @@ gem 'fcm'
 # Use sidekiq for background jobs
 gem 'sidekiq', '~>6.0.0'
 
-# Use redis 
+# Use redis to run action cable in production
 gem 'redis'
 
 # Use Active Storage variant

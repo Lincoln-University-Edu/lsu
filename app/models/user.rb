@@ -1,7 +1,10 @@
 class User < ApplicationRecord
+  include PgSearch::Model
+  pg_search_scope :search_by_term, against: [ :email, :first_name, :last_name ]
+
   EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/
   
-  validates :email, :password, presence: true
+  validates :email, :password, :first_name, :last_name, presence: true
   validates :email, uniqueness: true, format: { with: EMAIL_REGEX }
   has_secure_password
   has_many :majorings, dependent: :destroy

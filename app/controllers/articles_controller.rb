@@ -13,6 +13,13 @@ class ArticlesController < ApplicationController
 
   def create
     article = Article.create!(article_params)
+    
+    serialized_article = ActiveModelSerializers::Adapter::Json.new(
+      ArticleSerializer.new(article)
+    ).serializable_hash
+
+    BroadcastArticleWorker.perform_async(serialized_article)
+
     json_response(article, :created)
   end
 

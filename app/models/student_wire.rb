@@ -1,4 +1,7 @@
 class StudentWire < ApplicationRecord
+  include PgSearch::Model
+  pg_search_scope :search_by_term, against: [ :title, :body, :student_wire_keywords ]
+
   has_many :keywordings, as: :keywordable, dependent: :destroy
   has_many :keywords, through: :keywordings
   validates :contact, :title, :body, :cover_image, :external_link, :student_wire_keywords, presence: true

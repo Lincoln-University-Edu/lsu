@@ -21,6 +21,13 @@ class EntitiesController < ApplicationController
 
   def create
     entity = Entity.create!(entity_params)
+
+    serialized_entity = ActiveModelSerializers::Adapter::Json.new(
+      EntitySerializer.new(entity)
+    ).serializable_hash
+
+    BroadcastEntityWorker.perform_async(serialized_entity)
+
     json_response(entity, :created)
   end
 
