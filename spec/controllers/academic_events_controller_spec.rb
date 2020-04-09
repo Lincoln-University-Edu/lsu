@@ -11,20 +11,20 @@ RSpec.describe AcademicEventsController, type: :controller do
     end
   
     describe '#create' do
-        before do
-          params = attributes_for(:academic_event)
-          post :create, params: params
+      before do
+        params = attributes_for(:academic_event)
+        post :create, params: params
+      end
+      
+      context 'when user is not Academic Event publisher' do
+        it 'should raise error' do
+          expect(response.body).to match(/You are not an Academic Event Publisher/)
         end
-        
-        context 'when user is not Academic Event publisher' do
-          it 'should raise error' do
-            expect(response.body).to match(/You are not an Academic Event Publisher/)
-          end
-  
-          it 'should return status 401' do
-            expect(response).to have_http_status(401)
-          end
+
+        it 'should return status 401' do
+          expect(response).to have_http_status(401)
         end
+      end
     end
   
     describe '#update' do
