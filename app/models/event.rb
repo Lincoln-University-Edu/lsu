@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
+  default_scope { order( start_time: :desc ) }
+
   include PgSearch::Model
   pg_search_scope :search_by_term, against: [ :name, :location, :price, :event_category, :event_keywords, :description, :start_time, :end_time ]
 

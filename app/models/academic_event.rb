@@ -1,4 +1,6 @@
 class AcademicEvent < ApplicationRecord
+  default_scope { order( start_time: :desc ) }
+
   include PgSearch::Model
   pg_search_scope :search_by_term, against: [ :name, :description, :location, :start_time, :end_time ]
   
