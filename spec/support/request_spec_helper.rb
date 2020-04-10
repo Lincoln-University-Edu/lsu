@@ -48,11 +48,11 @@ module RequestSpecHelper
 
   def valid_entity_params
     {
-      name: "A name",
-      description: "A description",
-      email: "anemail@email.com",
-      phone_number: 23401924,
-      location: "world",
+      "name": "A name",
+      "description": "A description",
+      "email": "anemail@email.com",
+      "phone_number": 23401924,
+      "location": "world",
     }
   end
 
