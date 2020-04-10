@@ -26,11 +26,9 @@ gem 'pg_search'
 # Use fcm for push notifications
 gem 'fcm'
 
-# Use sidekiq for background jobs
-gem 'sidekiq'
 
-# Use redis to run action cable in production
-gem 'redis'
+gem 'redis', '~> 3.1'
+gem 'sidekiq', '~> 2.7', '>= 2.7.1'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
