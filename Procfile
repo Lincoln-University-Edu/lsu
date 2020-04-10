@@ -1,1 +1,1 @@
-luworker: bundle exec sidekiq -c 2
+luworker: bundle exec sidekiq -c 2 -v
