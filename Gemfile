@@ -30,8 +30,8 @@ gem 'fcm'
 gem 'sidekiq'
 gem 'msgpack'
 
-# Use redis to run action cable in production
-gem 'redis'
+# # Use redis to run action cable in production
+# gem 'redis'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
