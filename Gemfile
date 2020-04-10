@@ -27,8 +27,8 @@ gem 'pg_search'
 gem 'fcm'
 
 
-gem 'redis', '~> 3.1'
-gem 'sidekiq', '~> 2.7', '>= 2.7.1'
+gem 'redis'
+gem 'sidekiq'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
