@@ -231,7 +231,7 @@ DEPENDENCIES
   rspec-rails
   seedbank
   shoulda-matchers
-  sidekiq (~> 6.0.0)
+  sidekiq
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
