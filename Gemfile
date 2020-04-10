@@ -27,7 +27,7 @@ gem 'pg_search'
 gem 'fcm'
 
 # Use sidekiq for background jobs
-gem 'sidekiq', '~>6.0.0'
+gem 'sidekiq'
 
 # Use redis to run action cable in production
 gem 'redis'
