@@ -27,7 +27,6 @@ gem 'pg_search'
 gem 'fcm'
 
 
-gem 'redis'
 gem 'sidekiq'
 
 # Use Active Storage variant
