@@ -3,6 +3,6 @@ class BroadcastArticleWorker
   sidekiq_options retry: true
 
   def perform(article)
-    # ActionCable.server.broadcast 'article_channel', article
+    ActionCable.server.broadcast 'article_channel', article
   end
 end
