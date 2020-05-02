@@ -22,8 +22,8 @@ Rails.application.routes.draw do
   resources :events, except: %i[ edit ]
 
   resources :entities, except: %i[ edit ]
-  post '/entities/:id/users/new', to: 'entities#add_user'
-  delete '/entities/:id/users/:user_id', to: 'entities#remove_user'
+  post '/entities/:id/add_user_to_entity/:user_id', to: 'entities#add_user'
+  delete '/entities/:id/remove_user_from_entity/:user_id', to: 'entities#remove_user'
   
   resources :academic_events, except: %i[ edit ]
 
