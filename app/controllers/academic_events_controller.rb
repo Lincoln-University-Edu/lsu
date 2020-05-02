@@ -9,11 +9,7 @@ class AcademicEventsController < ApplicationController
   def create
     academic_event = AcademicEvent.create!(academic_event_params)
 
-    serialized_academic_event = ActiveModelSerializers::Adapter::Json.new(
-      AcademicEventSerializer.new(academic_event)
-    ).serializable_hash
-
-    BroadcastAcademicEventWorker.perform_async(serialized_academic_event)
+    BroadcastAcademicEventWorker.perform_async(serialized_academic_event(academic_event))
 
     json_response(academic_event, :created)
   end
@@ -33,6 +29,12 @@ class AcademicEventsController < ApplicationController
   end
 
   private
+
+  def serialized_academic_event(academic_event)
+    ActiveModelSerializers::Adapter::Json.new(
+      AcademicEventSerializer.new(academic_event)
+    ).serializable_hash
+  end
   
   def set_academic_event
     @academic_event = AcademicEvent.find_by!(id: params[:id])

@@ -22,11 +22,7 @@ class EntitiesController < ApplicationController
   def create
     entity = Entity.create!(entity_params)
 
-    serialized_entity = ActiveModelSerializers::Adapter::Json.new(
-      EntitySerializer.new(entity)
-    ).serializable_hash
-
-    BroadcastEntityWorker.perform_async(serialized_entity)
+    BroadcastEntityWorker.perform_async(serialized_entity(entity))
 
     json_response(entity, :created)
   end
@@ -43,6 +39,12 @@ class EntitiesController < ApplicationController
 
   private
 
+  def serialized_entity(entity)
+    ActiveModelSerializers::Adapter::Json.new(
+      EntitySerializer.new(entity)
+    ).serializable_hash
+  end
+  
   def set_entity
     @entity = Entity.find(params[:id])
   end

@@ -14,11 +14,7 @@ class ArticlesController < ApplicationController
   def create
     article = Article.create!(article_params)
     
-    serialized_article = ActiveModelSerializers::Adapter::Json.new(
-      ArticleSerializer.new(article)
-    ).serializable_hash
-
-    BroadcastArticleWorker.perform_async(serialized_article)
+    BroadcastArticleWorker.perform_async(serialized_article(article))
 
     json_response(article, :created)
   end
@@ -34,6 +30,13 @@ class ArticlesController < ApplicationController
   end
 
   private
+
+  def serialized_article(article)
+    ActiveModelSerializers::Adapter::Json.new(
+      ArticleSerializer.new(article)
+    ).serializable_hash
+  end
+  
   def article_params
     params.permit(:author_name, :title, :body, :description, :cover_image, :article_keywords, :article_category,)
   end

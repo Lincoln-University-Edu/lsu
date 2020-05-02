@@ -13,11 +13,7 @@ class PromotionsController < ApplicationController
   def create
     promotion = @current_user.promotions.create!(promotion_params)
 
-    serialized_promotion = ActiveModelSerializers::Adapter::Json.new(
-      PromotionSerializer.new(promotion)
-    ).serializable_hash
-
-    BroadcastPromotionWorker.perform_async(serialized_promotion)
+    BroadcastPromotionWorker.perform_async(serialized_promotion(promotion))
 
     json_response(promotion, :created)
   end
@@ -33,6 +29,12 @@ class PromotionsController < ApplicationController
   end
 
   private
+
+  def serialized_promotion(promotion)
+    ActiveModelSerializers::Adapter::Json.new(
+      PromotionSerializer.new(promotion)
+    ).serializable_hash
+  end
 
   def set_promotion
     @promotion = @current_user.promotions.find_by!(id: params[:id])
