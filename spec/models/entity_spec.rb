@@ -7,4 +7,6 @@ RSpec.describe Entity, type: :model do
   it { should validate_presence_of(:phone_number) }
   it { should validate_presence_of(:location) }
   it { should have_many(:events) }
+  it { should have_many(:social_accountings) }
+  it { should have_many(:social_accounts).through(:social_accountings) }
 end

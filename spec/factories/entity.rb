@@ -5,5 +5,6 @@ FactoryBot.define do
     email { Faker::Internet.email }
     phone_number { Faker::PhoneNumber.cell_phone }
     location { Faker::Movies::StarWars.planet }
+    entity_social_accounts { [{ type: "twitter", detail: "@entity" }, { type: "twitter", detail: "@entity" }] }
   end
 end
