@@ -14,7 +14,7 @@ class Event < ApplicationRecord
   def event_keywords=(keywords)
     if keywords
       self.keywords = keywords.split(',').map do |keyword|
-        keyword = Keyword.where(name: keyword.strip).first_or_create!
+        Keyword.where(name: keyword.strip).first_or_create!
       end
     end
   end

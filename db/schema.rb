@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_04_151643) do
+ActiveRecord::Schema.define(version: 2020_05_03_215833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -157,6 +157,22 @@ ActiveRecord::Schema.define(version: 2020_04_04_151643) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_promotions_on_user_id"
+  end
+
+  create_table "social_accountings", force: :cascade do |t|
+    t.bigint "social_account_id"
+    t.string "social_accountable_type"
+    t.integer "social_accountable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["social_account_id"], name: "index_social_accountings_on_social_account_id"
+  end
+
+  create_table "social_accounts", force: :cascade do |t|
+    t.string "type"
+    t.string "detail"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "student_wires", force: :cascade do |t|

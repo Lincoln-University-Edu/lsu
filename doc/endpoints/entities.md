@@ -18,10 +18,10 @@
 - DELETE `/entities/:id`
 **Deletes an entity**
 
-- POST `/entities/:id/users/new`
+- POST `/entities/:id/add_user_to_entity/:user_id`
 **Adds an entity to the list of a users entities valid params**
 
-- POST `/entities/:id/users/:user_id`
+- DELETE `/entities/:id/remove_user_from_entity/:user_id`
 **Removes an entity from the list of a users entities valid params**
 
 #### Note: All endpoints require an authorization header as specified in the [Authorization Docs](../auth/authorization.md)
