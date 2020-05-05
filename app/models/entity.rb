@@ -10,13 +10,15 @@ class Entity < ApplicationRecord
   has_many :social_accountings, as: :social_accountable
   has_many :social_accounts, through: :social_accountings
 
-  def event_social_accounts=(accounts)
+  def entity_social_accounts=(accounts)
     self.social_accounts = accounts.each do |account|
-      SocialAccount.where(type: account[:type], detail: account[:detail]).first_or_create!()
+      social_type = account[:social_type]
+      social_detail = account[:detail]
+      return SocialAccount.where(social_type: social_type).where(detail: social_detail).first_or_create!
     end
   end
 
-  def event_social_accounts
+  def entity_social_accounts
     self.social_accounts
   end
 end
