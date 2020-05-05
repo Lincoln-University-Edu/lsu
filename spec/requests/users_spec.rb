@@ -96,7 +96,7 @@ RSpec.describe 'Users API', type: :request do
     end
 
     context "when the record doesn't exist" do
-      before { put "/users/400", params: valid_user_params, headers: valid_headers  }
+      before { put "/users/#{400}", params: invalid_user_params, headers: valid_headers  }
       it 'should raise an error' do
         expect(response.body).to match(/Couldn't find User/)
       end
