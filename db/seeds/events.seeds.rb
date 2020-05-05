@@ -1,6 +1,6 @@
 require 'faker'
 
-10.times.each do 
+10.times.each do |time|
   entity_params = {
     name: "A name",
     description: "A description",
@@ -13,8 +13,8 @@ require 'faker'
   category = Category.create!({name: Faker::Music.genre})
 
   Event.create!(
-    start_time: Faker::Date.forward(days: 23),
-    end_time: Faker::Date.forward(days: 24),
+    start_time: Faker::Date.forward(days: (2 * time)),
+    end_time: Faker::Date.forward(days: (3 * time)),
     name: Faker::Book.title,
     description: Faker::Movies::StarWars.quote,
     location: Faker::Movies::StarWars.planet,
