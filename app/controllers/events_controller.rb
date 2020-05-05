@@ -3,10 +3,18 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[ show update destroy ]
   before_action :set_entity, only: %i[ create ]
   before_action :check_new_event_category, only: %i[ create ]
-  before_action :check_existing_event_category, except: %i[ index create ]
+  before_action :check_existing_event_category, only: %i[ update ]
 
   def index
     paginate Event.all, per_page: 15
+  end
+
+  def past_events
+    paginate Event.past, per_page: 15
+  end
+
+  def upcoming_events
+    paginate Event.upcoming, per_page: 15
   end
 
   def create

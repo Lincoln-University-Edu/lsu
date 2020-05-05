@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   post '/search_users', to: 'search#users'
   post '/search_student_wires', to: 'search#student_wires'
 
+  get '/upcoming_events', to: 'events#upcoming_events'
+  get '/past_events', to: 'events#past_events'
+
   resources :users, except: %i[ edit ]
 
   resources :articles, except: %i[ edit ]
