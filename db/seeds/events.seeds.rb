@@ -24,4 +24,17 @@ require 'faker'
     event_keywords: "some, fancy, event, keywords",
     entity_id: entity.id
   )
+
+  Event.create!(
+    start_time: Faker::Date.backward(days: (2 * time)),
+    end_time: Faker::Date.backward(days: (3 * time)),
+    name: Faker::Book.title,
+    description: Faker::Movies::StarWars.quote,
+    location: Faker::Movies::StarWars.planet,
+    price: 2.33,
+    external_link: Faker::Internet.url,
+    event_category: "Student Life",
+    event_keywords: "some, fancy, event, keywords",
+    entity_id: entity.id
+  )
 end
