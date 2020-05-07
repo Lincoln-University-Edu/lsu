@@ -1,6 +1,6 @@
 class Promotion < ApplicationRecord
   include PgSearch::Model
-  pg_search_scope :search_by_term, against: [ :title, :description, :condition, :price, :promotion_category ]
+  pg_search_scope :search_by_term, against: [ :title, :description, :condition, :price ]
 
   belongs_to :user
   has_one :categorizing, as: :categorizable

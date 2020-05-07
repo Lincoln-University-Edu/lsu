@@ -7,6 +7,10 @@ class EntitiesController < ApplicationController
    paginate Entity.all, per_page: 15, each_serializer: BasicEntitySerializer
   end
 
+  def full_entities
+    paginate Entity.all, per_page: 15
+  end
+
   def show
     json_response(@entity)
   end

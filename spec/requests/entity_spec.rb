@@ -17,6 +17,18 @@ RSpec.describe 'Entities API', type: :request do
     end
   end
 
+  describe 'GET /entities' do
+    before { get '/entities', headers: valid_headers }
+
+    it 'should return all Entities' do
+      expect(json['entities'].size).to eq(10)
+    end
+    
+    it 'should return status of 200' do
+      expect(response).to have_http_status(200)
+    end
+  end
+  
   describe 'POST /entities' do
     context 'with valid parameters' do
       before { post '/entities', params: valid_entity_params, headers: valid_headers }

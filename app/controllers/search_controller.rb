@@ -9,8 +9,8 @@ class SearchController < ApplicationController
     BroadcastSearchWorker.perform_async(result, @current_user.id)
   end
 
-  def entities
-    result = paginate Entity.search_by_term(search_params), per_page: 15
+  def articles
+    result = paginate Article.search_by_term(search_params), per_page: 15
     BroadcastSearchWorker.perform_async(result, @current_user.id)
   end
 

@@ -1,6 +1,6 @@
 class Article < ApplicationRecord
   include PgSearch::Model
-  pg_search_scope :search_by_term, against: [ :author_name, :title, :description, :body, :article_category, :article_category ]
+  pg_search_scope :search_by_term, against: [ :author_name, :title, :description, :body ]
 
   has_many :keywording, as: :keywordable, dependent: :destroy
   has_many :keywords, through: :keywording

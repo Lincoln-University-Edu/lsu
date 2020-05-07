@@ -4,7 +4,7 @@ class Event < ApplicationRecord
   scope :past, -> { where( 'start_time < ?', Date.today )  }
 
   include PgSearch::Model
-  pg_search_scope :search_by_term, against: [ :name, :location, :price, :event_category, :event_keywords, :description, :start_time, :end_time ]
+  pg_search_scope :search_by_term, against: [ :name, :location, :price, :description, :start_time, :end_time ]
 
   validates :start_time, :end_time, :name, :description, :location, :price, :external_link, :event_keywords, :event_category, presence: true
   belongs_to :entity
