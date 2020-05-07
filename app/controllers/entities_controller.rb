@@ -1,14 +1,27 @@
 class EntitiesController < ApplicationController
   before_action :set_entity, only: %i[ show update destroy add_user remove_user]
   before_action :set_user, only: %i[ add_user remove_user ]
-  skip_before_action :authorize_request, only: %i[ index ]
+  skip_before_action :authorize_request, only: %i[ index full_entities ]
 
   def index
    paginate Entity.all, per_page: 15, each_serializer: BasicEntitySerializer
   end
 
   def full_entities
+    org_type = params[:org_type].downcase!
+
+    if org_type == 'office'
+      paginate Entity.office, per_page: 15
+      return
+    end
+
+    if org_type == 'organization'
+      paginate Entity.organization, per_page: 15
+      return
+    end
+
     paginate Entity.all, per_page: 15
+    
   end
 
   def show

@@ -2,6 +2,9 @@ class Entity < ApplicationRecord
   include PgSearch::Model
   pg_search_scope :search_by_name, against: :name
 
+  scope :organization, -> { where('is_organization == ?', true) }
+  scope :office, -> { where('is_office == ?', true) }
+
   validates :name, :description, :email, :phone_number, :location, presence: true
   has_many :organizations, dependent: :destroy
   has_many :users, through: :organizations
