@@ -1,4 +1,4 @@
-class AcademicEventChannel < ApplicationCable::Channel
+class SearchChannel < ApplicationCable::Channel
   def subscribed
     stream_from "search_channel_#{current_user.id}"
   end

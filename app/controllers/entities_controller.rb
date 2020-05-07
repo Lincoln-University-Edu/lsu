@@ -63,6 +63,7 @@ class EntitiesController < ApplicationController
       :is_office, 
       :is_organisation,
       :entity_social_accounts,
+      :entity_image,
     )
   end
 end

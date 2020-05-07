@@ -9,4 +9,6 @@ RSpec.describe Entity, type: :model do
   it { should have_many(:events) }
   it { should have_many(:social_accountings) }
   it { should have_many(:social_accounts).through(:social_accountings) }
+  it { should have_one(:imaging) }
+  it { should have_one(:image).through(:imaging) }
 end

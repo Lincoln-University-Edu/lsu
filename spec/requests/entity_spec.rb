@@ -43,9 +43,13 @@ RSpec.describe 'Entities API', type: :request do
 
   describe 'GET /entities/:id' do
     context 'when record exists' do
-      before { put "/entities/#{entity.id}", params: valid_entity_params, headers: valid_headers }
-      it 'should return status of 204' do
-        expect(response).to have_http_status(204)
+      before { get "/entities/#{entity.id}", params: valid_entity_params, headers: valid_headers }
+      it 'should return status of 200' do
+        expect(response).to have_http_status(200)
+      end
+
+      it 'should return status of 200' do
+        expect(json['entity']['entity_image']).not_to be_empty
       end
     end
 

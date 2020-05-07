@@ -7,6 +7,7 @@ require 'faker'
     email: "anemail@email.com",
     phone_number: 23401924,
     location: "world",
+    entity_image: "https://images.unsplash.com/photo-1588804185322-d3665667a428?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
   }
 
   entity = Entity.create!(entity_params)

@@ -10,6 +10,9 @@ class Entity < ApplicationRecord
   has_many :social_accountings, as: :social_accountable
   has_many :social_accounts, through: :social_accountings
 
+  has_one :imaging, as: :imageable
+  has_one :image, through: :imaging
+
   def entity_social_accounts=(accounts)
     self.social_accounts = accounts.each do |account|
       social_type = account[:social_type]
@@ -20,5 +23,13 @@ class Entity < ApplicationRecord
 
   def entity_social_accounts
     self.social_accounts
+  end
+
+  def entity_image=(entity_image)
+    self.image = Image.where(url: entity_image).first_or_create!
+  end
+
+  def entity_image
+    self.image.try(:url)
   end
 end
