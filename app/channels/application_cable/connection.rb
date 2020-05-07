@@ -9,7 +9,7 @@ module ApplicationCable
   private
 
   def authorize_request
-    @current_user = AuthorizeApiRequest.new(request.params[:auth_token]).call[:user]
+    @current_user = AuthorizeApiRequest.new(request.headers).call[:user]
   end
   end
 end
