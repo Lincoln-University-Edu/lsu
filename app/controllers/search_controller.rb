@@ -1,4 +1,6 @@
 class SearchController < ApplicationController
+  before
+
   def academic_events
     result = paginate AcademicEvent.search_by_term(search_params), per_page: 15
     BroadcastSearchWorker.perform_async(result, @current_user.id)
@@ -37,6 +39,6 @@ class SearchController < ApplicationController
   private
   
   def search_params
-    params.permit(:search_term)
+    params[:search_term]
   end
 end
