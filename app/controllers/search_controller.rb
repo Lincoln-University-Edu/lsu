@@ -1,30 +1,37 @@
 class SearchController < ApplicationController
   def academic_events
-    paginate AcademicEvent.search_by_term(search_params), per_page: 15
+    result = paginate AcademicEvent.search_by_term(search_params), per_page: 15
+    BroadcastSearchWorker.perform_async(result, @current_user.id)
   end
 
   def promotions
-    paginate Promotion.search_by_term(search_params), per_page: 15
+    result = paginate Promotion.search_by_term(search_params), per_page: 15
+    BroadcastSearchWorker.perform_async(result, @current_user.id)
   end
 
   def entities
-    paginate Entity.search_by_term(search_params), per_page: 15
+    result = paginate Entity.search_by_term(search_params), per_page: 15
+    BroadcastSearchWorker.perform_async(result, @current_user.id)
   end
 
   def events
-    paginate Event.search_by_term(search_params), per_page: 15
+    result = paginate Event.search_by_term(search_params), per_page: 15
+    BroadcastSearchWorker.perform_async(result, @current_user.id)
   end
 
   def entities
-    paginate Entity.search_by_term(search_params), per_page: 15
+    result = paginate Entity.search_by_term(search_params), per_page: 15
+    BroadcastSearchWorker.perform_async(result, @current_user.id)
   end
 
   def users
-    paginate User.search_by_term(search_params), per_page: 15
+    result = paginate User.search_by_term(search_params), per_page: 15
+    BroadcastSearchWorker.perform_async(result, @current_user.id)
   end
 
   def student_wires
-    paginate StudentWire.search_by_term(search_params), per_page: 15
+    result = paginate StudentWire.search_by_term(search_params), per_page: 15
+    BroadcastSearchWorker.perform_async(result, @current_user.id)
   end
 
   private

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+  include ActionController::Cookies
   before_action :authorize_request
   include ExceptionHandler
   include Response
@@ -9,5 +10,7 @@ class ApplicationController < ActionController::API
 
   def authorize_request
     @current_user = AuthorizeApiRequest.new(request.headers).call[:user]
+    cookies.signed[:user_id] = @current_user.try(:id)
+    @current_user
   end
 end
