@@ -10,7 +10,5 @@ class ApplicationController < ActionController::API
 
   def authorize_request
     @current_user = AuthorizeApiRequest.new(request.headers).call[:user]
-    cookies.signed[:user_id] = @current_user.try(:id)
-    @current_user
   end
 end

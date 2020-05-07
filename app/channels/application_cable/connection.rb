@@ -1,11 +1,16 @@
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
-    include ActionController::Cookies
+  include ExceptionHandler
+  identified_by :current_user
 
-    if cookies.signed[:user_id] && current_user = User.find_by!(id: cookies.signed[:user_id])
-      current_user
-    else
-      reject_unauthorized_connection
-    end
+  def connect
+    self.current_user = authorize_request
+  end
+
+  private
+
+  def authorize_request
+    @current_user = AuthorizeApiRequest.new(request.params[:auth_token]).call[:user]
+  end
   end
 end
