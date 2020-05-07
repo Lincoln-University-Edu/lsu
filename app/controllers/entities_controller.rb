@@ -1,7 +1,7 @@
 class EntitiesController < ApplicationController
   before_action :set_entity, only: %i[ show update destroy add_user remove_user]
   before_action :set_user, only: %i[ add_user remove_user ]
-  skip_before_action :authorize_request, only: %i[ index full_entities ]
+  skip_before_action :authorize_request, only: %i[ index ]
 
   def index
    paginate Entity.all, per_page: 15, each_serializer: BasicEntitySerializer
