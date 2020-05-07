@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
   default_scope { order( start_time: :asc ) }
-  scope :upcoming, -> { where( 'start_time > ?', Date.today )  }
+  scope :upcoming, -> { where( 'start_time >= ?', Date.today )  }
   scope :past, -> { where( 'start_time < ?', Date.today )  }
 
   include PgSearch::Model
