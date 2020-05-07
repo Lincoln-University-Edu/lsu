@@ -1,5 +1,4 @@
 class SearchController < ApplicationController
-  before
 
   def academic_events
     result = paginate AcademicEvent.search_by_term(search_params), per_page: 15
