@@ -8,7 +8,9 @@ class EntitiesController < ApplicationController
   end
 
   def full_entities
-    org_type = params[:org_type] ? params[:org_type].downcase! : ""
+    raise(ExceptionHandler::MissingParametersError, "Missing Parameter, organization type needs to be specified") unless params[:org_type]
+    
+    org_type = params[:org_type] 
 
     if org_type == 'office'
       paginate Entity.office, per_page: 15
@@ -20,7 +22,6 @@ class EntitiesController < ApplicationController
       return
     end
 
-    paginate Entity.all, per_page: 15
     
   end
 

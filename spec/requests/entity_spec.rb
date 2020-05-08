@@ -17,15 +17,37 @@ RSpec.describe 'Entities API', type: :request do
     end
   end
 
-  describe 'GET /entities' do
-    before { get '/entities', headers: valid_headers }
-
-    it 'should return all Entities' do
-      expect(json['entities'].size).to eq(10)
+  describe 'GET /full_entities' do
+    context 'without specifying entity type' do
+      before { get '/full_entities', headers: valid_headers }
+  
+      it 'should raise missing parameters error' do
+        expect(json['message']).to match(//)
+        p json
+        raise_error(ExceptionHandler::MissingParametersError, "Boy")
+      end
+      
+      it 'should return status of 200' do
+        expect(response).to have_http_status(422)
+      end
     end
+
+    context 'specifying entity type' do
+      context 'when entity type is office' do
+        before { get "/full_entities", {params: {org_type: 'office'}, headers: valid_headers } }
     
-    it 'should return status of 200' do
-      expect(response).to have_http_status(200)
+        it 'should return only Entities that are offices' do
+          expect(json['entities']).to be_empty
+        end
+      end
+      
+      context 'when entity type is organization' do
+        before { get "/full_entities", { params: {org_type: 'organization'}, headers: valid_headers } }
+        
+        it 'should return only Entities that are organizations' do
+          expect(json['entities'].first['is_organisation']).to eq(true)
+        end
+      end
     end
   end
   
