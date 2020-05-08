@@ -8,7 +8,7 @@ class EntitiesController < ApplicationController
   end
 
   def full_entities
-    org_type = params[:org_type].downcase!
+    org_type = params[:org_type].downcase! if params[:org_type]
 
     if org_type == 'office'
       paginate Entity.office, per_page: 15
