@@ -3,6 +3,15 @@
 - GET `/events`
 **Returns a list of all events**
 
+- GET `/events`
+**Returns a list of all events**
+
+- GET `/upcoming events`
+**Returns all upcoming events i.e events for the current and future days**
+
+- GET `/past_events`
+**Returns all past events i.e events before the current day**
+
 - POST `/events`
 **Creates an event with valid params**
 

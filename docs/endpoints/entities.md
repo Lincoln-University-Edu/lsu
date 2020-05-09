@@ -1,10 +1,13 @@
 
 # The following endpoints are available for the entities resource
 - GET `/entities`
-**Returns a list of all entities**
+**Returns a list of all entities with just the name and id attributes present**
 
 - POST `/entities`
 **Creates an entity with valid params**
+
+- GET `/full_entities?org_type=organization_type_here`
+**Returns entities that correspond with the organization type, with all attributes present**
 
 - SHOW `/entities/:id`
 **Returns an entity with valid id**
