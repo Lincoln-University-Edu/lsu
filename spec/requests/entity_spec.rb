@@ -23,7 +23,6 @@ RSpec.describe 'Entities API', type: :request do
   
       it 'should raise missing parameters error' do
         expect(json['message']).to match(//)
-        p json
         raise_error(ExceptionHandler::MissingParametersError, "Boy")
       end
       

@@ -1,6 +1,6 @@
 class Entity < ApplicationRecord
   include PgSearch::Model
-  pg_search_scope :search_by_name, against: :name
+  pg_search_scope :search_by_term, against: [:name, :email, :description, :phone_number, :location]
 
   scope :organization, -> { where('is_organisation = ?', true) }
   scope :office, -> { where('is_office = ?', true) }

@@ -1,6 +1,6 @@
 class StudentWire < ApplicationRecord
   include PgSearch::Model
-  pg_search_scope :search_by_term, against: [ :title, :body ]
+  pg_search_scope :search_by_term, against: [ :title, :body, :contact ]
 
   has_many :keywordings, as: :keywordable, dependent: :destroy
   has_many :keywords, through: :keywordings
